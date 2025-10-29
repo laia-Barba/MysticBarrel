@@ -1,0 +1,39 @@
+<!-- Fragmento: Formulario de registro (aparente) -->
+<section class="auth-section">
+  <form class="auth-form" aria-label="Formulario de registro" onsubmit="return false;">
+    <div class="field">
+      <label for="reg-name">Nombre</label>
+      <input id="reg-name" name="name" type="text" placeholder="Tu nombre" required />
+    </div>
+    <div class="field">
+      <label for="reg-email">Email</label>
+      <input id="reg-email" name="email" type="email" placeholder="tu@email.com" required />
+    </div>
+    <div class="field">
+      <label for="reg-password">Contraseña</label>
+      <input id="reg-password" name="password" type="password" placeholder="••••••••" required />
+    </div>
+    <div class="field">
+      <label for="reg-password2">Repetir contraseña</label>
+      <input id="reg-password2" name="password2" type="password" placeholder="••••••••" required />
+    </div>
+    <label class="checkbox">
+      <input type="checkbox" required />
+      <span>Acepto los términos y condiciones</span>
+    </label>
+    <button class="btn btn-primary" type="button" aria-disabled="true">Crear cuenta</button>
+  </form>
+</section>
+
+<style>
+  .auth-section { display: grid; gap: 14px; }
+  .auth-form { display: grid; gap: 14px; }
+  .field { display: grid; gap: 6px; }
+  .field label { color: var(--muted); font-size: 0.95rem; }
+  .field input {
+    height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--stroke);
+    background: transparent; color: var(--text);
+  }
+  .field input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,162,83,0.18); }
+  .checkbox { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+</style>

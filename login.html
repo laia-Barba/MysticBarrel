@@ -1,0 +1,37 @@
+<!-- Fragmento: Formulario de inicio de sesión (aparente) -->
+<section class="auth-section">
+  <form class="auth-form" aria-label="Formulario de inicio de sesión" onsubmit="return false;">
+    <div class="field">
+      <label for="login-email">Email</label>
+      <input id="login-email" name="email" type="email" placeholder="tu@email.com" required />
+    </div>
+    <div class="field">
+      <label for="login-password">Contraseña</label>
+      <input id="login-password" name="password" type="password" placeholder="••••••••" required />
+    </div>
+    <div class="form-meta">
+      <label class="checkbox">
+        <input type="checkbox" />
+        <span>Recuérdame</span>
+      </label>
+      <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+    </div>
+    <button class="btn btn-primary" type="button" aria-disabled="true">Entrar</button>
+  </form>
+</section>
+
+<style>
+  .auth-section { display: grid; gap: 14px; }
+  .auth-form { display: grid; gap: 14px; }
+  .field { display: grid; gap: 6px; }
+  .field label { color: var(--muted); font-size: 0.95rem; }
+  .field input {
+    height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--stroke);
+    background: transparent; color: var(--text);
+  }
+  .field input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,162,83,0.18); }
+  .form-meta { display: flex; justify-content: space-between; align-items: center; }
+  .checkbox { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+  .link { color: var(--gold); text-decoration: none; }
+  .link:hover { text-decoration: underline; }
+</style>
