@@ -101,12 +101,40 @@
         </form>
       </section>
     </template>
-
-    <main style="padding: 24px 24px 48px; max-width: 1100px; margin: 0 auto;">
-      <h1 class="modal-title">Tienda</h1>
-      <p class="modal-subtitle">Explora nuestra selección de whiskies.</p>
-      <!-- Aquí podrías listar productos en el futuro -->
+ 
+    <main style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+      <img src="imagenes/MysticBarrelLogo.png" alt="Mystic Barrel" style="max-width: 420px; width: 100%; height: auto; display: block;" />
     </main>
+
+    <section>
+      <div class="whisky-container">
+        <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+        <div class="whisky-content">
+          <h2 class="whisky-title">{TITULO_PRODUCTO}</h2>
+          <p class="whisky-description">{DESCRIPCION_PRODUCTO}</p>
+          <button class="whisky-more">{TEXTO_BTN_MAS}</button>
+        </div>
+        <div class="whisky-price-section">
+          <span class="whisky-price">{PRECIO}</span>
+          <button class="whisky-buy">{TEXTO_BTN_COMPRAR}</button>
+        </div>
+      </div>
+
+      <div class="whisky-container">
+        <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+        <div class="whisky-content">
+          <h2 class="whisky-title">{TITULO_PRODUCTO}</h2>
+          <p class="whisky-description">{DESCRIPCION_PRODUCTO}</p>
+          <button class="whisky-more">{TEXTO_BTN_MAS}</button>
+        </div>
+        <div class="whisky-price-section">
+          <span class="whisky-price">{PRECIO}</span>
+          <button class="whisky-buy">{TEXTO_BTN_COMPRAR}</button>
+        </div>
+      </div>
+
+    </section>
+
 
     <script src="../busquedaLogin.js"></script>
     <script src="tienda.js"></script>
