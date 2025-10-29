@@ -3,74 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mystic Barrel</title>
-    <!-- Tipografías elegantes: Playfair Display (títulos) y Inter (texto) -->
+    <title>Mystic Barrel — Tienda</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <!-- Hoja de estilos principal -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="tienda.css" />
   </head>
   <body>
-    <!--
-      Header principal con diseño horizontal (izquierda a derecha):
-      - Marca "Mystic Barrel"
-      - Menú de navegación: Tienda, Historia, Merch
-      - Buscador con placeholder "Buscar whisky…" e ícono de lupa
-      - Botón/ícono de usuario al final que abre un menú (Login/Registro) y un panel lateral
-    -->
     <header class="site-header">
-      <div class="brand" aria-label="Mystic Barrel">Mystic Barrel</div>
-
+      <a href="../Pagina%20inici/paginaInici.html" class="brand" aria-label="Mystic Barrel">Mystic Barrel</a>
       <nav class="main-nav" aria-label="Navegación primaria">
         <a href="tienda.html" class="nav-link">Tienda</a>
-        <a href="paginaInici.html" class="nav-link">Historia</a>
-        <a href="merch.html" class="nav-link">Merch</a>
+        <a href="../Pagina%20inici/paginaInici.html" class="nav-link">Historia</a>
+        <a href="../Merch/merch.html" class="nav-link">Merch</a>
       </nav>
-
       <form class="search" role="search" aria-label="Buscar">
         <span class="search-icon" aria-hidden="true">
-          <!-- Ícono de lupa (SVG) -->
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
             <line x1="16.65" y1="16.65" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </span>
-        <input
-          type="search"
-          name="q"
-          class="search-input"
-          placeholder="Buscar whisky…"
-          aria-label="Buscar whisky"
-        />
+        <input type="search" name="q" class="search-input" placeholder="Buscar whisky…" aria-label="Buscar whisky" />
       </form>
-
-      <button
-        class="user-btn"
-        id="userButton"
-        aria-label="Abrir opciones de usuario"
-        aria-haspopup="menu"
-        aria-expanded="false"
-      >
-        <!-- Ícono de usuario (SVG) -->
+      <button class="user-btn" id="userButton" aria-label="Abrir opciones de usuario" aria-haspopup="menu" aria-expanded="false">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
           <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </button>
-
-      <!-- Menú desplegable de usuario -->
       <div class="user-menu" id="userMenu" role="menu" aria-label="Opciones de usuario" hidden>
         <button class="user-menu-item" role="menuitem" data-action="login">Iniciar sesión</button>
         <button class="user-menu-item" role="menuitem" data-action="register">Registrarse</button>
       </div>
     </header>
 
-    <!-- Overlay reutilizado para panel lateral -->
     <div class="modal-overlay" id="auth-overlay" hidden></div>
 
-    <!-- Panel lateral deslizante -->
     <aside class="side-panel" id="sidePanel" role="dialog" aria-modal="true" aria-labelledby="panel-title" hidden>
       <div class="panel-header">
         <h2 id="panel-title" class="panel-title">Cuenta</h2>
@@ -80,14 +49,10 @@
           </svg>
         </button>
       </div>
-      <div class="panel-content" id="panelContent" aria-live="polite">
-        <!-- Contenido dinámico (login/register) -->
-      </div>
+      <div class="panel-content" id="panelContent" aria-live="polite"></div>
     </aside>
 
-    <!-- Fallbacks embebidos para panel (usados si fetch falla con file://) -->
     <template id="tpl-login">
-      <!-- Fragmento: Formulario de inicio de sesión (aparente) -->
       <section class="auth-section">
         <form class="auth-form" aria-label="Formulario de inicio de sesión" onsubmit="return false;">
           <div class="field">
@@ -111,7 +76,6 @@
     </template>
 
     <template id="tpl-register">
-      <!-- Fragmento: Formulario de registro (aparente) -->
       <section class="auth-section">
         <form class="auth-form" aria-label="Formulario de registro" onsubmit="return false;">
           <div class="field">
@@ -139,7 +103,13 @@
       </section>
     </template>
 
-    <!-- Script principal para interacción del modal -->
-    <script src="script.js"></script>
+    <main style="padding: 24px 24px 48px; max-width: 1100px; margin: 0 auto;">
+      <h1 class="modal-title">Tienda</h1>
+      <p class="modal-subtitle">Explora nuestra selección de whiskies.</p>
+      <!-- Aquí podrías listar productos en el futuro -->
+    </main>
+
+    <script src="../busquedaLogin.js"></script>
+    <script src="tienda.js"></script>
   </body>
 </html>

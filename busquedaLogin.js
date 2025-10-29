@@ -49,9 +49,12 @@
   async function openPanel(kind) {
     // kind: 'login' | 'register'
     lastFocused = document.activeElement;
+    const prefix = (location.pathname.includes('/Tienda/') || location.pathname.includes('/Merch/') || location.pathname.includes('/Pagina%20inici/') || location.pathname.includes('/Pagina inici/'))
+      ? '../'
+      : './';
     const map = {
-      login: { file: 'login.html', title: 'Iniciar sesión' },
-      register: { file: 'register.html', title: 'Registrarse' }
+      login: { file: prefix + 'login.html', title: 'Iniciar sesión' },
+      register: { file: prefix + 'register.html', title: 'Registrarse' }
     };
     const cfg = map[kind];
     if (!cfg) return;
@@ -148,3 +151,5 @@
     if (!sidePanel.hasAttribute('hidden')) closePanel();
   });
 })();
+
+
