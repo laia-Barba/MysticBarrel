@@ -303,7 +303,27 @@
     <br>
     <br>
 
+    <div class="modal-overlay" id="product-overlay" hidden></div>
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productTitle" hidden>
+      <div class="product-dialog">
+        <button class="product-close" id="productCloseBtn" aria-label="Cerrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="product-media">
+          <model-viewer id="productModel" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="1" exposure="0.9" auto-rotate></model-viewer>
+        </div>
+        <div class="product-info">
+          <h2 id="productTitle"></h2>
+          <p id="productDescription"></p>
+          <div class="product-price" id="productPrice"></div>
+          <button class="product-buy-btn" id="productBuyBtn">Comprar</button>
+        </div>
+      </div>
+    </div>
 
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="../busquedaLogin.js"></script>
     <script src="tienda.js"></script>
   </body>
