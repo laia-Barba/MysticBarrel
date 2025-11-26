@@ -187,7 +187,7 @@
       <div>
         <h2>Highlands Whiskies</h2>
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/ScottishPeaks3D.glb" alt="Botella whisky 3D - Scottish Peaks" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Scottish Peaks</h2>
             <p class="whisky-description">Herbal y fresco, reúne la esencia de la naturaleza escocesa, con aromas de brezo y hierbas silvestres. Perfecto para quienes buscan intensidad aromática y frescura vibrante en su copa.</p>
@@ -198,7 +198,7 @@
           </div>
         </div>
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/EchoOfTheHichlands3D.glb" alt="Botella whisky 3D - Echo of the Highlands" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Echo of the Highlands</h2>
             <p class="whisky-description">Floral y levemente ahumado, aporta profundidad con una rica base de malta y matices delicados, evocando el paisaje y la tradición de las Highlands.</p>
@@ -210,7 +210,7 @@
         </div>
 
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/HighlandBreeze3D.glb" alt="Botella whisky 3D - Highland Breeze" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Highland Breeze</h2>
             <p class="whisky-description">Afrutado, especiado y refrescante, ofrece equilibrio entre fruta madura y especias suaves, recordando la brisa natural de las montañas escocesas.</p>
@@ -263,7 +263,7 @@
       <div>
         <h2>Bourbon Whiskies</h2>
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/BourbonHeart3D.glb" alt="Botella whisky 3D - Bourbon Heart" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Bourbon Heart</h2>
             <p class="whisky-description">Fuerte presencia de roble, vainilla y fruta madura oscura, resulta cálido y aromático, perfecto para quienes quieren intensidad y nobleza en su bourbon.</p>
@@ -274,7 +274,7 @@
           </div>
         </div>
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/KentuckyOak3D.glb" alt="Botella whisky 3D - Kentucky Oak" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Kentucky Oak</h2>
             <p class="whisky-description">Robusto y envolvente, con notas claras de caramelo y roble tostado, este bourbon respira la tradición de Kentucky con cada sorbo y acaba en un dulce y cálido abrazo.</p>
@@ -286,7 +286,7 @@
         </div>
 
         <div class="whisky-container">
-          <img src="ruta_a_la_imagen_botella.jpg" alt="Botella whisky" class="whisky-image">
+          <model-viewer src="./Models3D/SouthernFlame3D.glb" alt="Botella whisky 3D - Southern Flame" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
           <div class="whisky-content">
             <h2 class="whisky-title">Southern Flame</h2>
             <p class="whisky-description">Especiado y dulce, con maíz presente y un final muy suave, promueve una experiencia cálida y confortante ideal para la sobremesa y encuentros íntimos.</p>
@@ -297,34 +297,54 @@
           </div>
         </div>
       </div>
-
-
     </section>
     <br>
     <br>
-
-    <div class="modal-overlay" id="product-overlay" hidden></div>
-    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productTitle" hidden>
-      <div class="product-dialog">
-        <button class="product-close" id="productCloseBtn" aria-label="Cerrar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+    <!-- Modal producto -->
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" hidden>
+      <div class="product-modal-content">
+        <button class="product-modal-close" id="productModalClose" aria-label="Cerrar">
+          ✕
         </button>
-        <div class="product-media">
-          <model-viewer id="productModel" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls shadow-intensity="1" exposure="0.9" auto-rotate></model-viewer>
-        </div>
-        <div class="product-info">
-          <h2 id="productTitle"></h2>
-          <p id="productDescription"></p>
-          <div class="product-price" id="productPrice"></div>
-          <button class="product-buy-btn" id="productBuyBtn">Comprar</button>
+
+        <div class="product-modal-layout">
+          <img id="productModalImage" src="" alt="" class="product-modal-image">
+          <model-viewer id="productModalModel" src="" alt="" class="product-modal-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" hidden></model-viewer>
+
+          <div class="product-modal-info">
+            <h2 id="productModalTitle" class="product-modal-title"></h2>
+            <p id="productModalDescription" class="product-modal-description"></p>
+
+            <div class="product-modal-price-row">
+              <span>Precio unidad:</span>
+              <span id="productModalUnitPrice" class="product-modal-price"></span>
+            </div>
+
+            <div class="product-modal-quantity-row">
+              <span>Cantidad:</span>
+              <div class="quantity-control">
+                <button type="button" class="qty-btn" data-action="decrease">−</button>
+                <span id="productModalQuantity" class="qty-value">1</span>
+                <button type="button" class="qty-btn" data-action="increase">+</button>
+              </div>
+            </div>
+
+            <div class="product-modal-total-row">
+              <span>Total:</span>
+              <span id="productModalTotal" class="product-modal-total"></span>
+            </div>
+
+            <button type="button" class="btn btn-primary product-modal-buy">
+              Comprar
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script src="../busquedaLogin.js"></script>
     <script src="tienda.js"></script>
+    <script src="../busquedaLogin.js"></script>
   </body>
 </html>
+
