@@ -139,14 +139,37 @@ const popups = {
   },
   gorra: {
     html: `
-      <img src="merch4.jpg" alt="Gorra Premium" style="height:200px;margin-bottom:18px;">
-      <h2 style="font-family:'Playfair Display';color:#2b2b2b;margin-bottom:8px;">Gorra Premium</h2>
-      <p style="color:#6c6c6c;">Gorra negra ajustable, logo dorado Mystic Barrel centrado.</p>
-      <div class="quantity-selector">
-        <span class="quantity-label">Cantidad:</span>
-        <button class="quantity-btn" onclick="decreaseQuantity('gorra')">-</button>
-        <span class="quantity-value" id="quantity-gorra">1</span>
-        <button class="quantity-btn" onclick="increaseQuantity('gorra')">+</button>
+      <div style="display:flex; flex-direction:row; gap:48px;">
+        <div class="merch-popup-col" style="align-items:center;">
+          <div id="gorra-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+        </div>
+        <div class="merch-popup-info">
+          <div class="merch-popup-title">Gorra Premium Mystic Barrel</div>
+          <div class="merch-popup-desc">
+            Gorra negra ajustable, logo dorado Mystic Barrel centrado.
+            <br><br>
+            Material: Algodón premium<br>
+            Ajuste: Correa trasera regulable<br>
+            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">25,00€</span>
+          </div>
+          <div class="merch-popup-colors">
+            <div class="merch-color-label">Color:</div>
+            <button class="merch-color-option selected" data-color="verde" data-model="Gorra.glb" style="background:#2d5016;"></button>
+            <button class="merch-color-option" data-color="rojo" data-model="Gorra2.glb" style="background:#8b0000;"></button>
+            <button class="merch-color-option" data-color="azul" data-model="Gorra3.glb" style="background:#1e3a8a;"></button>
+            <button class="merch-color-option" data-color="rosa" data-model="Gorra4.glb" style="background:#be185d;"></button>
+          </div>
+          <div class="quantity-selector">
+            <span class="quantity-label">Cantidad:</span>
+            <button class="quantity-btn" onclick="decreaseQuantity('gorra')">-</button>
+            <span class="quantity-value" id="quantity-gorra">1</span>
+            <button class="quantity-btn" onclick="increaseQuantity('gorra')">+</button>
+          </div>
+          <p id="price-gorra" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">25,00€</p>
+          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('gorra')">
+            Añadir al carrito
+          </button>
+        </div>
       </div>
     `
   },
@@ -165,14 +188,36 @@ const popups = {
   },
   llavero: {
     html: `
-      <img src="merch6.jpg" alt="Llavero Limited" style="height:200px;margin-bottom:18px;">
-      <h2 style="font-family:'Playfair Display';color:#2b2b2b;margin-bottom:8px;">Llavero Limited</h2>
-      <p style="color:#6c6c6c;">Llavero metálico con logo Mystic Barrel grabado.</p>
-      <div class="quantity-selector">
-        <span class="quantity-label">Cantidad:</span>
-        <button class="quantity-btn" onclick="decreaseQuantity('llavero')">-</button>
-        <span class="quantity-value" id="quantity-llavero">1</span>
-        <button class="quantity-btn" onclick="increaseQuantity('llavero')">+</button>
+      <div style="display:flex; flex-direction:row; gap:48px;">
+        <div class="merch-popup-col" style="align-items:center;">
+          <div id="llavero-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+        </div>
+        <div class="merch-popup-info">
+          <div class="merch-popup-title">Llavero Limited Mystic Barrel</div>
+          <div class="merch-popup-desc">
+            Llavero metálico con logo Mystic Barrel grabado.
+            <br><br>
+            Material: Acero inoxidable<br>
+            Acabado: Pulido brillante<br>
+            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">15,00€</span>
+          </div>
+          <div class="merch-popup-colors">
+            <div class="merch-color-label">Color:</div>
+            <button class="merch-color-option selected" data-color="rosa" data-model="LLavero4.glb" style="background:#be185d;"></button>
+            <button class="merch-color-option" data-color="rojo" data-model="LLavero2.glb" style="background:#8b0000;"></button>
+            <button class="merch-color-option" data-color="azul" data-model="LLavero3.glb" style="background:#1e3a8a;"></button>
+          </div>
+          <div class="quantity-selector">
+            <span class="quantity-label">Cantidad:</span>
+            <button class="quantity-btn" onclick="decreaseQuantity('llavero')">-</button>
+            <span class="quantity-value" id="quantity-llavero">1</span>
+            <button class="quantity-btn" onclick="increaseQuantity('llavero')">+</button>
+          </div>
+          <p id="price-llavero" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">15,00€</p>
+          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('llavero')">
+            Añadir al carrito
+          </button>
+        </div>
       </div>
     `
   }
@@ -193,7 +238,9 @@ function updatePrice(product) {
   const prices = {
     camiseta: 25,
     sudadera: 40,
-    copa: 9.95
+    copa: 9.95,
+    gorra: 25.00,
+    llavero: 15.00
   };
   const basePrice = prices[product];
   const totalPrice = (basePrice * quantity).toFixed(2);
@@ -234,7 +281,9 @@ function addToCart(product) {
   const prices = {
     camiseta: 25,
     sudadera: 40,
-    copa: 9.95
+    copa: 9.95,
+    gorra: 25.00,
+    llavero: 15.00
   };
   const basePrice = prices[product];
   const totalPrice = (basePrice * quantity).toFixed(2);
@@ -243,7 +292,9 @@ function addToCart(product) {
   const productInfo = {
     camiseta: { name: 'Camiseta Vintage', price: 25 },
     sudadera: { name: 'Sudadera Classic', price: 40 },
-    copa: { name: 'Vaso de Whisky Mystic Barrel', price: 9.95 }
+    copa: { name: 'Vaso de Whisky Mystic Barrel', price: 9.95 },
+    gorra: { name: 'Gorra Premium Mystic Barrel', price: 25.00 },
+    llavero: { name: 'Llavero Limited Mystic Barrel', price: 15.00 }
   };
   
   const info = productInfo[product];
@@ -271,9 +322,13 @@ document.querySelectorAll('.merch-card').forEach(card => {
       // Inicializar el precio del producto
       setTimeout(() => { updatePrice(key); }, 50);
       
-      // Solo carga el visor FBX si es el vaso
+      // Solo carga el visor FBX si es el vaso, la gorra o el llavero
       if (key === "copa") {
         setTimeout(() => { initVaso3D(); }, 100);
+      } else if (key === "gorra") {
+        setTimeout(() => { initGorra3D(); }, 100);
+      } else if (key === "llavero") {
+        setTimeout(() => { initLlavero3D(); }, 100);
       }
     }
   });
@@ -293,26 +348,32 @@ document.getElementById('merch-popup-overlay').onclick = function(e) {
 document.getElementById('merch-popup-content').addEventListener('click', function(e) {
   // Colores para camisetas y sudaderas
   if (e.target.classList.contains("merch-color-option")) {
-    const color = e.target.dataset.color;
-    const colorContainer = e.target.closest('.merch-popup-colors');
-    if (colorContainer) {
-      colorContainer.querySelectorAll(".merch-color-option").forEach(b => b.classList.remove("selected"));
+    const colorsContainer = e.target.closest('.merch-popup-colors');
+    if (colorsContainer) {
+      colorsContainer.querySelectorAll(".merch-color-option").forEach(b => b.classList.remove("selected"));
       e.target.classList.add("selected");
-      const isShirt = colorContainer.id === 'shirt-colors';
-      const productType = isShirt ? 'camiseta' : 'sudadera';
-      const mainImgId = isShirt ? 'main-shirt-img' : 'main-hoodie-img';
-      const thumbnailsId = isShirt ? 'shirt-thumbnails' : 'hoodie-thumbnails';
-      const mainImg = document.getElementById(mainImgId);
-      const thumbnailsContainer = document.getElementById(thumbnailsId);
-      if (productImages[productType] && productImages[productType][color]) {
-        const images = productImages[productType][color];
-        mainImg.src = images[0];
-        thumbnailsContainer.innerHTML = images.map((img, index) =>
-          `<img src="${img}" class="merch-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}" alt="Vista ${index === 0 ? 'delantera' : 'trasera'}"/>`
-        ).join('');
+      
+      // Si es la gorra o el llavero, cambiar el modelo 3D
+      if (e.target.dataset.model) {
+        const modelFile = e.target.dataset.model;
+        console.log('Cambiando a modelo:', modelFile);
+        
+        // Determinar qué producto es basado en el modelo
+        if (modelFile.includes('Gorra')) {
+          // Recargar el visor 3D de la gorra con el nuevo modelo
+          setTimeout(() => {
+            initGorra3D(modelFile);
+          }, 100);
+        } else if (modelFile.includes('LLavero')) {
+          // Recargar el visor 3D del llavero con el nuevo modelo
+          setTimeout(() => {
+            initLlavero3D(modelFile);
+          }, 100);
+        }
       }
     }
   }
+  
   // Miniaturas
   if (e.target.classList.contains("merch-thumbnail")) {
     const thumbnails = e.target.parentElement.querySelectorAll(".merch-thumbnail");
@@ -326,6 +387,7 @@ document.getElementById('merch-popup-content').addEventListener('click', functio
       }
     }
   }
+  
   // Tallas
   if (e.target.classList.contains("merch-size-option")) {
     const sizesContainer = e.target.closest('.merch-popup-sizes');
@@ -335,6 +397,1009 @@ document.getElementById('merch-popup-content').addEventListener('click', functio
     }
   }
 });
+
+// Función para el visor 3D de la gorra en la sección principal (sin controles)
+function initGorra3DMain() {
+  console.log('Iniciando visor 3D de la gorra principal...');
+  
+  const container = document.getElementById('gorra-3d-viewer-main');
+  if (!container) {
+    console.error('No se encontró el contenedor gorra-3d-viewer-main');
+    return;
+  }
+  
+  console.log('Contenedor de gorra encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor de gorra no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initGorra3DMain(), 100);
+    return;
+  }
+  
+  // Limpiar el container por si acaso
+  container.innerHTML = '';
+  
+  // Forzar dimensiones del contenedor (adaptado al tamaño de la tarjeta)
+  container.style.width = '100%';
+  container.style.height = '240px'; // Mismo tamaño que las imágenes
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312'; // Mismo color que los demás popups
+  
+  console.log('Dimensiones de gorra forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Configurar la escena con fondo artesanal consistente
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x1f1810); // Color artesanal consistente
+  
+  // Configurar la cámara igual que el popup
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 0.5, 3); // Ligeramente elevado y más cerca
+  camera.lookAt(0, 0, 0);
+  
+  // Configurar el renderizador con mejor manejo de transparencia (igual que popup)
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  
+  // Mejorar el renderizado de objetos transparentes
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  // Configurar luces exactamente igual que el popup
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Mostrar indicador de carga
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.textContent = 'Cargando modelo 3D...';
+  container.appendChild(loadingText);
+  
+  // Cargar el modelo GLB/GLTF de la gorra
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo: Gorra.glb');
+  
+  loader.load(
+    'Gorra.glb',
+    function(gltf) {
+      console.log('Modelo de gorra cargado:', gltf);
+      console.log('Escena del modelo de gorra:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo exactamente igual que el popup
+      const model = gltf.scene;
+      
+      // Centrar el modelo (igual que popup)
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir el modelo para mejor visualización
+      model.position.y += 0.4; // Subir la gorra
+      
+      // Ajustar escala si es necesario (más pequeño para el contenedor)
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2 / maxDim; // Más pequeño que el popup
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales exactamente igual que el popup
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.2;
+            node.material.roughness = 0.8;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Iniciar animación de rotación automática (sin controles)
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotación automática constante
+        model.rotation.y += 0.008;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      // Mostrar progreso de carga
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('Error al cargar el modelo de gorra:', error);
+      loadingText.innerHTML = 'Error al cargar el modelo 3D. <button id="retry-button-gorra" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">Reintentar</button>';
+      loadingText.style.color = '#ff6b6b';
+      document.getElementById('retry-button-gorra').addEventListener('click', () => {
+        initGorra3DMain();
+      });
+    }
+  );
+  
+  // Manejar redimensionamiento
+  function onWindowResize() {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  }
+  
+  window.addEventListener('resize', onWindowResize);
+}
+
+// Función para el visor 3D del llavero en la sección principal (sin controles)
+function initLlavero3DMain() {
+  console.log('Iniciando visor 3D del llavero principal...');
+  
+  const container = document.getElementById('llavero-3d-viewer-main');
+  if (!container) {
+    console.error('No se encontró el contenedor llavero-3d-viewer-main');
+    return;
+  }
+  
+  console.log('Contenedor de llavero encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor de llavero no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initLlavero3DMain(), 100);
+    return;
+  }
+  
+  // Limpiar el container por si acaso
+  container.innerHTML = '';
+  
+  // Forzar dimensiones del contenedor (adaptado al tamaño de la tarjeta)
+  container.style.width = '100%';
+  container.style.height = '240px'; // Mismo tamaño que las imágenes
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312'; // Mismo color que los demás popups
+  
+  console.log('Dimensiones de llavero forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Configurar la escena con fondo artesanal consistente
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x1f1810); // Color artesanal consistente
+  
+  // Configurar la cámara igual que el popup
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 0.5, 3); // Ligeramente elevado y más cerca
+  camera.lookAt(0, 0, 0);
+  
+  // Configurar el renderizador con mejor manejo de transparencia (igual que popup)
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  
+  // Mejorar el renderizado de objetos transparentes
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  // Configurar luces exactamente igual que el popup
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Mostrar indicador de carga
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.textContent = 'Cargando modelo 3D...';
+  container.appendChild(loadingText);
+  
+  // Cargar el modelo GLB/GLTF del llavero
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo: LLavero4.glb');
+  
+  loader.load(
+    'LLavero4.glb',
+    function(gltf) {
+      console.log('Modelo de llavero cargado:', gltf);
+      console.log('Escena del modelo de llavero:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo exactamente igual que el popup
+      const model = gltf.scene;
+      
+      // Centrar el modelo (igual que popup)
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir el modelo para mejor visualización
+      model.position.y += 0.6; // Más arriba (era 0.4, ahora 0.6)
+      
+      // Rotar el modelo para que se vea de pie (vertical)
+      model.rotation.x = (-320 * Math.PI) / 180; // Rotar 90 grados en X para ponerlo de pie
+      model.rotation.y = 0; // Sin rotación en Y para mostrar la otra cara
+      
+      // Ajustar escala si es necesario (más pequeño para el contenedor)
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 1.0 / maxDim; // Más pequeño (era 1.2, ahora 1.0)
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales exactamente igual que el popup
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.8; // Más brillante para metal
+            node.material.roughness = 0.2; // Más pulido
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Iniciar animación de rotación automática (sin controles)
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotación automática constante del llavero sobre su propio eje
+        model.rotation.y += 0.008;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      // Mostrar progreso de carga
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('Error al cargar el modelo de llavero:', error);
+      loadingText.innerHTML = 'Error al cargar el modelo 3D. <button id="retry-button-llavero" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">Reintentar</button>';
+      loadingText.style.color = '#ff6b6b';
+      document.getElementById('retry-button-llavero').addEventListener('click', () => {
+        initLlavero3DMain();
+      });
+    }
+  );
+}
+function initVaso3DMain() {
+  console.log('Iniciando visor 3D principal...');
+  
+  const container = document.getElementById('vaso-3d-viewer-main');
+  if (!container) {
+    console.error('No se encontró el contenedor vaso-3d-viewer-main');
+    return;
+  }
+  
+  console.log('Contenedor encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initVaso3DMain(), 100);
+    return;
+  }
+  
+  // Limpiar el container por si acaso
+  container.innerHTML = '';
+  
+  // Forzar dimensiones del contenedor (adaptado al tamaño de la tarjeta)
+  container.style.width = '100%';
+  container.style.height = '240px'; // Mismo tamaño que las imágenes
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312'; // Mismo color que los demás popups
+  
+  console.log('Dimensiones forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Configurar la escena con fondo artesanal consistente
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x1f1810); // Color artesanal consistente
+  
+  // Configurar la cámara igual que el popup
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 0.5, 3); // Ligeramente elevado y más cerca
+  camera.lookAt(0, 0, 0);
+  
+  // Configurar el renderizador con mejor manejo de transparencia (igual que popup)
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  
+  // Mejorar el renderizado de objetos transparentes
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  // Configurar luces exactamente igual que el popup
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Mostrar indicador de carga
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.textContent = 'Cargando modelo 3D...';
+  container.appendChild(loadingText);
+  
+  // Cargar el modelo GLB/GLTF con la misma configuración que el popup
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo: VASOB.glb');
+  
+  loader.load(
+    'VASOB.glb',
+    function(gltf) {
+      console.log('Modelo cargado:', gltf);
+      console.log('Escena del modelo:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo exactamente igual que el popup
+      const model = gltf.scene;
+      
+      // Centrar el modelo (igual que popup)
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir el modelo para mejor visualización
+      model.position.y += 0.8; // Subir el vaso
+      
+      // Ajustar escala si es necesario (más pequeño para el contenedor)
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 1.3 / maxDim; // Más pequeño que el popup
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales exactamente igual que el popup
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.2;
+            node.material.roughness = 0.8;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Iniciar animación de rotación automática (sin controles)
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotación automática constante
+        model.rotation.y += 0.008;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      // Mostrar progreso de carga
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('Error al cargar el modelo:', error);
+      loadingText.innerHTML = 'Error al cargar el modelo 3D. <button id="retry-button-main" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">Reintentar</button>';
+      loadingText.style.color = '#ff6b6b';
+      document.getElementById('retry-button-main').addEventListener('click', () => {
+        initVaso3DMain();
+      });
+    }
+  );
+  
+  // Manejar redimensionamiento
+  function onWindowResize() {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  }
+  
+  window.addEventListener('resize', onWindowResize);
+}
+
+// Inicializar los visores 3D principales cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+  // Esperar un poco para asegurar que el DOM esté completamente cargado
+  setTimeout(() => {
+    initVaso3DMain();
+    initGorra3DMain();
+    initLlavero3DMain();
+  }, 100);
+});
+
+// Función para el visor 3D de la gorra en el popup (con controles)
+function initGorra3D(modelFile = 'Gorra.glb') {
+  console.log('Iniciando visor 3D de la gorra...');
+  console.log('THREE disponible:', typeof THREE);
+  console.log('GLTFLoader disponible:', typeof THREE.GLTFLoader);
+  console.log('Modelo a cargar:', modelFile);
+  
+  if (typeof THREE.GLTFLoader === 'undefined') {
+    console.error('GLTFLoader no está disponible');
+    return;
+  }
+  
+  const container = document.getElementById('gorra-3d-viewer');
+  if (!container) {
+    console.error('No se encontró el contenedor gorra-3d-viewer');
+    return;
+  }
+  
+  console.log('Contenedor de gorra encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  console.log('Estilos del contenedor:', container.style.cssText);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor de gorra no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initGorra3D(modelFile), 100);
+    return;
+  }
+  
+  // Limpiar el container por si acaso
+  container.innerHTML = '';
+  
+  // Forzar dimensiones del contenedor
+  container.style.width = '320px';
+  container.style.height = '320px';
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312'; // Mismo color que los demás popups
+  
+  console.log('Dimensiones de gorra forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Configurar la escena con fondo negro como el popup
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x141312); // Fondo negro como el popup
+  
+  // Configurar la cámara para ver la gorra de frente
+  const camera = new THREE.PerspectiveCamera(
+    55, // FOV más pequeño para perspectiva más alejada
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(1, 1, 13); // Posición inicial
+  camera.lookAt(0, 0, 0);
+  
+  // Rotar la cámara para ver la gorra de frente (mostrar la visera)
+  camera.position.x = 2; // Mover a la derecha
+  camera.position.z = 2; // Mover hacia adelante
+  camera.lookAt(0, 1, 0); // Mirar al centro de la gorra (elevado)
+  
+  // Configurar el renderizador con mejor manejo de transparencia
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  
+  // Mejorar el renderizado de objetos transparentes
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  console.log('Renderizador de gorra creado y añadido al contenedor');
+  
+  // Configurar controles con zoom y minimizado desactivados
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; // Movimiento suave
+  controls.dampingFactor = 0.05;
+  controls.enableZoom = false; // Desactivar zoom
+  controls.minDistance = 2; // Distancia mínima
+  controls.maxDistance = 4; // Distancia máxima
+  controls.enablePan = false; // Desactivar minimizar/pan
+  controls.autoRotate = false; // Sin rotación automática
+  controls.enableKeys = false; // Desactivar teclas
+  controls.mouseButtons = {
+    LEFT: THREE.MOUSE.ROTATE, // Solo rotar con botón izquierdo
+    MIDDLE: THREE.MOUSE.DOLLY, // Desactivado
+    RIGHT: THREE.MOUSE.ROTATE // Rotar con botón derecho también
+  };
+  
+  // Configurar luces
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Mostrar indicador de carga
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.textContent = 'Cargando modelo 3D...';
+  container.appendChild(loadingText);
+  
+  // Cargar el modelo GLB/GLTF de la gorra
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo de gorra:', modelFile);
+  
+  loader.load(
+    modelFile,
+    function(gltf) {
+      console.log('Modelo de gorra cargado:', gltf);
+      console.log('Escena del modelo de gorra:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo
+      const model = gltf.scene;
+      
+      // Centrar el modelo
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Rotar el modelo -60 grados horizontalmente para que la visera quede hacia adelante
+      model.rotation.y = (-80 * Math.PI) / 180; // -60 grados en radianes
+      
+      // Subir el modelo para mejor visualización
+      model.position.y += 0.4; // Subir la gorra
+      
+      // Ajustar escala si es necesario
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2 / maxDim; // Escala para el popup
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.2;
+            node.material.roughness = 0.8;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Iniciar animación con controles
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        // Actualizar controles
+        controls.update();
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      // Mostrar progreso de carga
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('Error al cargar el modelo de gorra:', error);
+      loadingText.innerHTML = 'Error al cargar el modelo 3D. <button id="retry-button-gorra-popup" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">Reintentar</button>';
+      loadingText.style.color = '#ff6b6b';
+      document.getElementById('retry-button-gorra-popup').addEventListener('click', () => {
+        initGorra3D(modelFile);
+      });
+    }
+  );
+}
+
+// Función para el visor 3D del llavero en el popup (con controles)
+function initLlavero3D(modelFile = 'LLavero4.glb') {
+  console.log('=== INICIANDO VISOR 3D DEL LLAVERO ===');
+  console.log('Modelo a cargar:', modelFile);
+  console.log('THREE disponible:', typeof THREE);
+  console.log('GLTFLoader disponible:', typeof THREE.GLTFLoader);
+  
+  if (typeof THREE.GLTFLoader === 'undefined') {
+    console.error('ERROR: GLTFLoader no está disponible');
+    return;
+  }
+  
+  const container = document.getElementById('llavero-3d-viewer');
+  console.log('Container encontrado:', container);
+  
+  if (!container) {
+    console.error('ERROR: No se encontró el contenedor llavero-3d-viewer');
+    return;
+  }
+  
+  console.log('Container dimensions:', container.clientWidth, 'x', container.clientHeight);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('Container sin dimensiones, reintentando en 100ms...');
+    setTimeout(() => initLlavero3D(modelFile), 100);
+    return;
+  }
+  
+  // Limpiar el container por si acaso
+  container.innerHTML = '';
+  
+  // Forzar dimensiones del contenedor
+  container.style.width = '320px';
+  container.style.height = '320px';
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312';
+  
+  console.log('Dimensiones forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Mostrar indicador de carga inmediato
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.textContent = 'Iniciando visor 3D...';
+  container.appendChild(loadingText);
+  
+  // Configurar la escena con fondo negro como el popup
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x141312);
+  
+  // Configurar la cámara para ver el llavero de frente
+  const camera = new THREE.PerspectiveCamera(
+    65,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(10, 2, 29); // Más alejado (era 13)
+  camera.lookAt(0, 0, 0);
+  
+  // Rotar la cámara para ver el llavero de frente
+  camera.position.x = 3; // Más a la derecha y alejado (era 2)
+  camera.position.z = 5; // Más alejado (era 2)
+  camera.lookAt(0.9, 0.9, 0); // Mirar al centro del llavero (ajustado a nueva posición)
+  
+  // Configurar el renderizador
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  console.log('Renderizador creado y añadido');
+  
+  // Configurar controles
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
+  controls.enableZoom = false;
+  controls.minDistance = 2;
+  controls.maxDistance = 4;
+  controls.enablePan = false;
+  controls.autoRotate = false;
+  controls.enableKeys = false;
+  controls.mouseButtons = {
+    LEFT: THREE.MOUSE.ROTATE,
+    MIDDLE: THREE.MOUSE.DOLLY,
+    RIGHT: THREE.MOUSE.ROTATE
+  };
+  
+  // Configurar luces
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  console.log('Escena configurada, iniciando carga del modelo...');
+  
+  // Actualizar texto de carga
+  loadingText.textContent = 'Cargando modelo 3D...';
+  
+  // Cargar el modelo GLB/GLTF del llavero
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo:', modelFile);
+  
+  loader.load(
+    modelFile,
+    function(gltf) {
+      console.log('✅ Modelo cargado exitosamente:', gltf);
+      console.log('Escena del modelo:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo
+      const model = gltf.scene;
+      
+      // Centrar el modelo
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir y mover a la derecha el modelo para mejor visualización del llavero
+      model.position.y += 0.8; // Más elevación para el llavero
+      model.position.x += 0.9; // Mover a la derecha
+      
+      // Ajustar escala si es necesario - llavero necesita ser más grande
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 2 / maxDim; // Escala mayor para el llavero (era 2)
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.8;
+            node.material.roughness = 0.2;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      console.log('Modelo añadido a la escena');
+      
+      // Iniciar animación con controles
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+      console.log('✅ Animación iniciada');
+    },
+    function(xhr) {
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      console.log(`📊 Progreso de carga: ${percentLoaded}%`);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('❌ Error al cargar el modelo:', error);
+      console.error('Error details:', error.message || error);
+      loadingText.innerHTML = `
+        <div style="color:#ff6b6b; text-align:center;">
+          ❌ Error al cargar el modelo 3D<br>
+          <small>Archivo: ${modelFile}</small><br>
+          <button id="retry-button-llavero-popup" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">
+            Reintentar
+          </button>
+        </div>
+      `;
+      document.getElementById('retry-button-llavero-popup').addEventListener('click', () => {
+        console.log('🔄 Reintentando carga...');
+        initLlavero3D(modelFile);
+      });
+    }
+  );
+}
 
 // Función para el visor 3D del vaso de whisky
 function initVaso3D() {

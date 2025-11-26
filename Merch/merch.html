@@ -102,48 +102,89 @@
       </section>
     </template>
 
-    <main style="padding: 45px 4px 48px; max-width: 1400px; margin: 0 auto;">
-      <h1 class="modal-title">Merch</h1>
-      <p class="modal-subtitle">Descubre nuestra ropa y accesorios oficiales.</p>
-      <div class="merch-grid">
-        <div class="merch-card" data-popup="camiseta">
-          <img src="fotos/Camiseta delante1.png" alt="Camiseta Vintage Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Camisetas Vintage</h3>
-          <p class="merch-info">Confeccionadas con algodón premium y detalles resistentes, ofrecen un ajuste versátil y transpirable apto para todos los públicos.</p>
+    <main>
+      <section class="merch-section">
+        <div class="merch-container">
+          <h1 class="merch-title">Colección Artesanal</h1>
+          <p class="merch-subtitle">Piezas únicas con el espíritu de Mystic Barrel</p>
+          
+          <div class="merch-grid">
+            <div class="merch-card" data-popup="camiseta">
+              <div class="merch-3d-container">
+                <img src="fotos/Camiseta delante1.png" alt="Camiseta Vintage Mystic Barrel" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">LIMITED</span>
+                <h3>Camisetas Vintage</h3>
+                <p>Confeccionadas con algodón premium y detalles resistentes, ofrecen un ajuste versátil y transpirable apto para todos los públicos.</p>
+              </div>
+            </div>
+            
+            <div class="merch-card" data-popup="sudadera">
+              <div class="merch-3d-container">
+                <img src="fotos/sudaD1.png" alt="Sudadera Classic Mystic Barrel" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">PREMIUM</span>
+                <h3>Sudadera Classic</h3>
+                <p>Sudadera premium negra, logo Mystic Barrel en dorado.</p>
+              </div>
+            </div>
+            
+            <div class="merch-card" data-popup="copa">
+              <div class="merch-3d-container">
+                <div id="vaso-3d-viewer-main" style="width:100%;height:100%;background:linear-gradient(145deg, #2a2218 0%, #1f1810 100%);position:relative;"></div>
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">EXCLUSIVO</span>
+                <h3>Vaso de Whisky</h3>
+                <p>Cristal templado, grabado Mystic Barrel. Diseño exclusivo.</p>
+              </div>
+            </div>
+            
+            <div class="merch-card" data-popup="gorra">
+              <div class="merch-3d-container">
+                <div id="gorra-3d-viewer-main" style="width:100%;height:100%;background:linear-gradient(145deg, #2a2218 0%, #1f1810 100%);position:relative;"></div>
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">SIGNATURE</span>
+                <h3>Gorra Premium</h3>
+                <p>Gorra negra ajustable, logo dorado Mystic Barrel centrado.</p>
+              </div>
+            </div>
+            
+            <div class="merch-card" data-popup="botella">
+              <div class="merch-3d-container">
+                <img src="merch5.jpg" alt="Botella Colección Mystic Barrel" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">COLLECTION</span>
+                <h3>Botella Colección</h3>
+                <p>Botella exclusiva con logo y numeración original Mystic Barrel.</p>
+              </div>
+            </div>
+            
+            <div class="merch-card" data-popup="llavero">
+              <div class="merch-3d-container">
+                <div id="llavero-3d-viewer-main" style="width:100%;height:100%;background:linear-gradient(145deg, #2a2218 0%, #1f1810 100%);position:relative;"></div>
+              </div>
+              <div class="merch-info">
+                <span class="merch-badge">LIMITED</span>
+                <h3>Llavero Limited</h3>
+                <p>Llavero metálico con logo Mystic Barrel grabado.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="merch-card" data-popup="sudadera">
-          <img src="fotos/sudaD1.png" alt="Sudadera Classic Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Sudadera Classic</h3>
-          <p class="merch-info">Sudadera premium negra, logo Mystic Barrel en dorado.</p>
+        
+        <!-- Popup de productos -->
+        <div id="merch-popup-overlay" class="merch-popup-overlay">
+          <div class="merch-popup-card" id="merch-popup-card">
+            <button class="merch-popup-close" id="merch-popup-close">&times;</button>
+            <div id="merch-popup-content"></div>
+          </div>
         </div>
-        <div class="merch-card" data-popup="copa">
-          <img src="merch3.jpg" alt="Copa Whisky Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Vaso de Whisky</h3>
-          <p class="merch-info">Cristal templado, grabado Mystic Barrel. Diseño exclusivo.</p>
-        </div>
-        <div class="merch-card" data-popup="gorra">
-          <img src="merch4.jpg" alt="Gorra Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Gorra Premium</h3>
-          <p class="merch-info">Gorra negra ajustable, logo dorado Mystic Barrel centrado.</p>
-        </div>
-        <div class="merch-card" data-popup="botella">
-          <img src="merch5.jpg" alt="Botella Colección Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Botella Colección</h3>
-          <p class="merch-info">Botella exclusiva con logo y numeración original Mystic Barrel.</p>
-        </div>
-        <div class="merch-card" data-popup="llavero">
-          <img src="merch6.jpg" alt="Llavero Mystic Barrel" class="merch-img" />
-          <h3 class="merch-title">Llavero Limited</h3>
-          <p class="merch-info">Llavero metálico con logo Mystic Barrel grabado.</p>
-        </div>
-      </div>
-      <!-- Popup de productos -->
-      <div id="merch-popup-overlay" class="merch-popup-overlay">
-        <div class="merch-popup-card" id="merch-popup-card">
-          <button class="merch-popup-close" id="merch-popup-close">&times;</button>
-          <div id="merch-popup-content"></div>
-        </div>
-      </div>
+      </section>
     </main>
 
     <!-- Librerías Three.js y loader GLTF para modelos 3D -->
