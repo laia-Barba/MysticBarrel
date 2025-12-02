@@ -384,6 +384,12 @@ body {
   .search { flex: 1 1 auto; min-width: 0; }
 }
 
+@media (max-width: 900px) {
+  .merch-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Ampliar separación y proporciones en pantallas grandes */
 @media (min-width: 1200px) {
   .site-header {
@@ -418,4 +424,1331 @@ body {
     width: 44px;
     height: 44px;
   }
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 30px;
+}
+
+.merch-card {
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  border: 1px solid var(--stroke);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 20px 20px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.merch-card:hover {
+  box-shadow: 0 10px 40px rgba(197,162,83,0.16);
+  border-color: var(--gold);
+}
+
+.merch-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #5f5f5f;
+  box-shadow: 0 2px 12px #0000003a;
+}
+
+.merch-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.merch-info {
+  color: var(--muted);
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.main-merch {
+  margin: 0 auto;
+  padding: 0 32px 48px 32px;
+  max-width: 1100px;
+}
+
+/* Popup de merch */
+.merch-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease;
+}
+
+.merch-popup-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.merch-popup-card {
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(122, 122, 122, 0.5);
+  width: 80vw;
+  max-width: 1100px;
+  min-width: 320px;
+  min-height: 520px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 54px 56px 44px 40px;
+  position: relative;
+  gap: 32px;
+  animation: popupBounceIn 400ms cubic-bezier(.34,1.56,.64,1);
+  overflow: auto;
+}
+
+.merch-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 2px solid var(--stroke);
+  color: var(--text);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+  z-index: 10;
+}
+
+.merch-popup-close:hover,
+.merch-popup-close:focus {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
+  transform: rotate(90deg);
+}
+
+.merch-popup-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.merch-popup-image {
+  width: 280px;
+  height: 280px;
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 18px;
+  margin-bottom: 18px;
+  background: #6d6d6d;
+  border: 1.5px solid var(--stroke);
+  padding: 8px;
+}
+
+.merch-popup-thumbnails {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.merch-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #6d6d6d;
+  border: 2px solid var(--stroke);
+  cursor: pointer;
+  transition: border-color 200ms ease, transform 150ms ease, box-shadow 200ms ease;
+  padding: 4px;
+}
+
+.merch-thumbnail:hover {
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.merch-thumbnail.active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 162, 83, 0.3);
+}
+
+.merch-popup-colors {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.merch-color-option {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid var(--stroke);
+  background: #eee;
+  cursor: pointer;
+  transition: border-color 160ms, box-shadow 160ms;
+}
+
+.merch-color-option.selected,
+.merch-color-option:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197,162,83,0.3);
+}
+
+.merch-color-white { background: #fafaff; }
+.merch-color-black { background: #181818; }
+.merch-color-blue { background: #21407a; }
+.merch-color-red { background: #bb2424; }
+.merch-color-grey { background: #808080; }
+.merch-color-green { background: #0d3b0f; }
+
+.merch-popup-sizes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.merch-size-option {
+  border: 1.5px solid var(--stroke);
+  color: var(--text);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 8px 16px;
+  background: var(--bg-alt);
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 160ms, background 160ms, color 160ms;
+}
+
+.merch-size-option.selected,
+.merch-size-option:focus {
+  border-color: var(--gold);
+  background: rgba(197, 162, 83, 0.15);
+  color: var(--gold);
+}
+
+.merch-popup-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 24px;
+}
+
+.merch-popup-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--gold);
+}
+
+.merch-popup-desc {
+  color: var(--muted);
+  font-size: 1.08rem;
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+/* Animación para el popup */
+@keyframes popupBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Estilos para formularios de autenticación */
+.auth-section {
+  padding: 12px 0;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  outline: none;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.field input::placeholder {
+  color: var(--muted);
+}
+
+.field input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(197, 162, 83, 0.18);
+}
+
+.form-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--gold);
+}
+
+.link {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 180ms ease;
+}
+
+.link:hover,
+.link:focus {
+  color: var(--focus);
+  text-decoration: underline;
+}
+
+/* Responsive para popup */
+@media (max-width: 900px) {
+  .merch-popup-card {
+    flex-direction: column;
+    width: 96vw;
+    padding: 32px 8vw 24px 8vw;
+    gap: 18px;
+    align-items: center;
+  }
+  
+  .merch-popup-image {
+    width: 85vw;
+    height: 200px;
+  }
+  
+  .merch-popup-info {
+    margin-left: 0;
+    max-width: 100%;
+  }
+  
+  .merch-popup-title {
+    font-size: 1.6rem;
+  }
+  
+  .merch-popup-desc {
+    font-size: 1rem;
+  }
+  
+  .merch-color-option {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .merch-size-option {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Selector de cantidad */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.quantity-label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.quantity-btn {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--stroke);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover {
+  border-color: var(--gold);
+  background: rgba(197, 162, 83, 0.15);
+  color: var(--gold);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.quantity-value {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--gold);
+  background: rgba(197, 162, 83, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(197, 162, 83, 0.3);
+}
+
+/* ========================================
+   ESTILOS ARTESANALES PARA MERCH - NUEVO DISEÑO
+   ======================================== */
+
+/* Importar tipografía artesanal */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Bebas+Neue&display=swap');
+
+/* Variables artesanales */
+:root {
+  --artisan-bg: linear-gradient(135deg, #1a1814 0%, #2d2519 50%, #1a1814 100%);
+  --artisan-card: linear-gradient(145deg, #2a2218 0%, #1f1810 100%);
+  --artisan-gold: linear-gradient(45deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+  --artisan-text: #f5f5dc;
+  --artisan-muted: #c9b79c;
+  --artisan-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+  --artisan-border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Sección Merch con estilo artesanal */
+.merch-section {
+  position: relative;
+  padding: 120px 20px;
+  background: var(--artisan-bg);
+  overflow: hidden;
+}
+
+/* Fondo texturizado */
+.merch-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.01) 35px, rgba(212, 175, 55, 0.01) 70px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.merch-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Título artesanal */
+.merch-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: var(--artisan-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.merch-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: var(--artisan-gold);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.merch-subtitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.4rem;
+  color: var(--artisan-muted);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Grid de productos artesanal */
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Tarjeta artesanal */
+.merch-card {
+  position: relative;
+  background: var(--artisan-card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--artisan-shadow);
+  border: var(--artisan-border);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.merch-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 1;
+}
+
+.merch-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.merch-card:hover::before {
+  opacity: 1;
+}
+
+/* Contenedor 3D en tarjeta */
+.merch-card .merch-3d-container {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.merch-card .merch-3d-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(26, 24, 20, 0.2) 0%, rgba(26, 24, 20, 0.8) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Forzar que los visores 3D ocupen todo el espacio */
+.merch-card .merch-3d-container > div {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 20px 20px 0 0 !important;
+  overflow: hidden !important;
+}
+
+.merch-card .merch-3d-container > div canvas {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 20px 20px 0 0 !important;
+}
+
+/* Información del producto */
+.merch-info {
+  padding: 30px;
+  position: relative;
+  z-index: 3;
+}
+
+.merch-card h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.2rem;
+  color: var(--artisan-text);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.merch-card p {
+  font-family: 'Crimson Text', serif;
+  color: var(--artisan-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Badge artesanal */
+.merch-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: var(--artisan-gold);
+  color: #1a1814;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.merch-card:nth-child(1) { animation: float 4s ease-in-out infinite; }
+.merch-card:nth-child(2) { animation: float 4s ease-in-out 1s infinite; }
+.merch-card:nth-child(3) { animation: float 4s ease-in-out 2s infinite; }
+
+/* Efecto de brillo al hover */
+.merch-card:hover .merch-3d-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(212, 175, 55, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s ease-in-out;
+  z-index: 3;
+}
+
+/* Responsive para diseño artesanal */
+@media (max-width: 768px) {
+  .merch-section {
+    padding: 80px 15px;
+  }
+  
+  .merch-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .merch-title {
+    font-size: 3rem;
+  }
+  
+  .merch-card h3 {
+    font-size: 1.8rem;
+  }
+  
+  .merch-info {
+    padding: 20px;
+  }
+}
+
+/* ========================================
+   ESTILOS ARTESANALES PARA POPUPS
+   ======================================== */
+
+/* Overlay del popup artesanal */
+.merch-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(26, 24, 20, 0.85);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.merch-popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Tarjeta del popup artesanal */
+.merch-popup-card {
+  background: var(--artisan-card);
+  border: var(--artisan-border);
+  border-radius: 24px;
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  transform: scale(0.9) translateY(20px);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.merch-popup-overlay.active .merch-popup-card {
+  transform: scale(1) translateY(0);
+}
+
+/* Botón de cerrar artesanal */
+.merch-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--artisan-gold);
+  border: none;
+  border-radius: 50%;
+  color: #1a1814;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.merch-popup-close:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Contenido del popup */
+.merch-popup-content {
+  padding: 40px;
+  color: var(--artisan-text);
+}
+
+/* Columnas del popup */
+.merch-popup-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.merch-popup-col:first-child {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Visor 3D del popup */
+.merch-popup-col #llavero-3d-viewer {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Información del popup */
+.merch-popup-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.merch-popup-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--artisan-text);
+  margin: 0;
+  background: var(--artisan-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.merch-popup-desc {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.2rem;
+  color: var(--artisan-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Selector de colores artesanal */
+.merch-popup-colors {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.merch-color-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  color: var(--artisan-text);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.merch-color-option {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.merch-color-option:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.merch-color-option.selected {
+  border-color: var(--artisan-text);
+  box-shadow: 
+    0 0 0 2px rgba(212, 175, 55, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.merch-color-option.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Selector de cantidad artesanal */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.quantity-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.1rem;
+  color: var(--artisan-text);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.quantity-btn {
+  width: 36px;
+  height: 36px;
+  background: var(--artisan-gold);
+  border: none;
+  border-radius: 8px;
+  color: #1a1814;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.quantity-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.quantity-value {
+  min-width: 50px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--artisan-text);
+  background: rgba(212, 175, 55, 0.1);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Precio artesanal */
+.merch-popup-content p[id^="price-"] {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2rem;
+  color: var(--artisan-text);
+  font-weight: 700;
+  margin: 0;
+  background: var(--artisan-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Botón de añadir al carrito artesanal */
+.merch-add-to-cart {
+  background: var(--artisan-gold);
+  color: #1a1814;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.merch-add-to-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+}
+
+.merch-add-to-cart:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar artesanal */
+.merch-popup-card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.merch-popup-card::-webkit-scrollbar-track {
+  background: rgba(212, 175, 55, 0.1);
+  border-radius: 4px;
+}
+
+.merch-popup-card::-webkit-scrollbar-thumb {
+  background: var(--artisan-gold);
+  border-radius: 4px;
+}
+
+.merch-popup-card::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #d4af37 0%, #f4e4bc 100%);
+}
+
+/* ========================================
+   ESTILOS ARTESANALES PARA BARRA DE BÚSQUEDA
+   ======================================== */
+
+/* Barra de búsqueda artesanal */
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--artisan-card);
+  border: var(--artisan-border);
+  border-radius: 50px;
+  padding: 12px 24px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+  min-width: 280px;
+}
+
+.search:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2),
+    0 0 0 1px rgba(212, 175, 55, 0.3);
+}
+
+.search:focus-within {
+  border-color: var(--artisan-gold);
+  box-shadow: 
+    0 8px 30px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(212, 175, 55, 0.3),
+    0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* Icono de búsqueda artesanal */
+.search-icon {
+  color: var(--artisan-muted);
+  margin-right: 20px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1200px;
+}
+
+.search-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2;
+}
+
+.search:focus-within .search-icon {
+  color: var(--artisan-gold);
+}
+
+/* Input de búsqueda artesanal */
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--artisan-text);
+  font-family: 'Crimson Text', serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: var(--artisan-muted);
+  font-family: 'Crimson Text', serif;
+  font-style: italic;
+  transition: all 0.3s ease;
+}
+
+.search:hover .search-input::placeholder {
+  color: var(--artisan-text);
+  opacity: 0.7;
+}
+
+.search:focus-within .search-input::placeholder {
+  opacity: 0.5;
+}
+
+/* Efecto de brillo sutil */
+.search::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+  border-radius: 50px 50px 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .search {
+    padding: 10px 16px;
+    border-radius: 40px;
+  }
+  
+  .search-input {
+    font-size: 14px;
+  }
+  
+  .search-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ========================================
+   FOOTER ARTESANO ORIGINAL
+   ======================================== */
+
+.artisan-footer {
+  background: linear-gradient(135deg, #1f1810 0%, #2a2218 50%, #1f1810 100%);
+  border-top: 2px solid var(--artisan-gold);
+  position: relative;
+  overflow: hidden;
+}
+
+.artisan-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--artisan-gold), transparent);
+  opacity: 0.3;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--artisan-gold);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.footer-brand p {
+  color: var(--artisan-muted);
+  font-family: 'Crimson Text', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.footer-section h4 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  color: var(--artisan-text);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: var(--artisan-muted);
+  text-decoration: none;
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-section ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--artisan-gold);
+  transition: width 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: var(--artisan-gold);
+}
+
+.footer-section ul li a:hover::before {
+  width: 100%;
+}
+
+.footer-social h4 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.2rem;
+  color: var(--artisan-text);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--artisan-muted);
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: var(--artisan-gold);
+  color: var(--artisan-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.footer-bottom p {
+  color: var(--artisan-muted);
+  font-family: 'Crimson Text', serif;
+  font-size: 0.9rem;
+  margin: 5px 0;
+}
+
+.footer-bottom p:last-child {
+  color: var(--artisan-gold);
+  font-style: italic;
+}
+
+/* Responsive para móvil */
+@media (max-width: 768px) {
+  .artisan-footer {
+    padding: 40px 0 20px;
+    margin-top: 60px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .social-icons {
+    justify-content: center;
+  }
+  
+  .footer-brand h3 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   BORDER-RADIUS PARA CONTENEDORES 3D EN POPUPS
+   ======================================== */
+
+#vaso-3d-viewer,
+#gorra-3d-viewer,
+#taza-3d-viewer,
+#llavero-3d-viewer {
+  border-radius: 16px !important;
+  overflow: hidden;
+}
+
+#vaso-3d-viewer canvas,
+#gorra-3d-viewer canvas,
+#taza-3d-viewer canvas,
+#llavero-3d-viewer canvas {
+  border-radius: 16px !important;
 }
