@@ -1,38 +1,55 @@
-// Carrusel de imágenes - Mystic Barrel
-window.addEventListener('DOMContentLoaded', function () {
-  const imgs = document.querySelectorAll('.carousel-img');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let current = 0;
-  let timer = null;
+// Carrusel Simple Personalizado - Mystic Barrel
+let currentSlideIndex = 0;
+let slideInterval;
 
-  function showImage(idx) {
-    imgs.forEach((img, i) => {
-      img.classList.toggle('active', i === idx);
-    });
+function showSlide(index) {
+  const slides = document.getElementsByClassName('carousel-slide');
+  const dots = document.getElementsByClassName('dot');
+  
+  if (slides.length === 0) return;
+  
+  // Ocultar todos los slides
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].classList.remove('active');
   }
-
-  function startCarousel() {
-    timer = setInterval(() => {
-      current = (current + 1) % imgs.length;
-      showImage(current);
-    }, 4000);
+  
+  // Quitar active de todos los dots
+  for (let i = 0; i < dots.length; i++) {
+    dots[i].classList.remove('active');
   }
+  
+  // Mostrar slide actual
+  currentSlideIndex = index;
+  if (currentSlideIndex >= slides.length) {
+    currentSlideIndex = 0;
+  } else if (currentSlideIndex < 0) {
+    currentSlideIndex = slides.length - 1;
+  }
+  
+  slides[currentSlideIndex].classList.add('active');
+  dots[currentSlideIndex].classList.add('active');
+}
 
-  prevBtn.addEventListener('click', () => {
-    clearInterval(timer);
-    current = (current - 1 + imgs.length) % imgs.length;
-    showImage(current);
-    startCarousel();
-  });
+function changeSlide(direction) {
+  clearInterval(slideInterval);
+  showSlide(currentSlideIndex + direction);
+  startAutoSlide();
+}
 
-  nextBtn.addEventListener('click', () => {
-    clearInterval(timer);
-    current = (current + 1) % imgs.length;
-    showImage(current);
-    startCarousel();
-  });
+function currentSlide(index) {
+  clearInterval(slideInterval);
+  showSlide(index - 1);
+  startAutoSlide();
+}
 
-  showImage(current);
-  startCarousel();
+function startAutoSlide() {
+  slideInterval = setInterval(() => {
+    showSlide(currentSlideIndex + 1);
+  }, 3000);
+}
+
+// Inicializar carrusel
+document.addEventListener('DOMContentLoaded', function() {
+  showSlide(0);
+  startAutoSlide();
 });
