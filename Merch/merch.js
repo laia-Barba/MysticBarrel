@@ -22,13 +22,13 @@ const popups = {
           <img src="fotos/Camiseta delante1.png" alt="Camiseta Vintage Mystic Barrel" class="merch-popup-image" id="main-shirt-img"/>
           <div class="merch-popup-thumbnails" id="shirt-thumbnails">
             <img src="fotos/Camiseta delante1.png" class="merch-thumbnail active" data-index="0" alt="Vista adelante"/>
-            <img src="fotos/camiseta atras1.png" class="merch-thumbnail" data-index="1" alt="Vista atrás"/>
+            <img src="fotos/Camiseta atras1.png" class="merch-thumbnail" data-index="1" alt="Vista atrás"/>
           </div>
           <div class="merch-popup-colors" id="shirt-colors">
-            <button class="merch-color-option merch-color-black selected" data-color="black" aria-label="Negro"></button>
-            <button class="merch-color-option merch-color-white" data-color="white" aria-label="Blanco"></button>
-            <button class="merch-color-option merch-color-red" data-color="red" aria-label="Rojo"></button>
-            <button class="merch-color-option merch-color-blue" data-color="blue" aria-label="Azul"></button>
+            <button class="merch-color-option merch-color-black selected" data-color="black" data-front="fotos/Camiseta delante1.png" data-back="fotos/Camiseta atras1.png" aria-label="Negro"></button>
+            <button class="merch-color-option merch-color-white" data-color="white" data-front="fotos/Camiseta delante2.png" data-back="fotos/camiseta atras2.png" aria-label="Blanco"></button>
+            <button class="merch-color-option merch-color-red" data-color="red" data-front="fotos/Camiseta delante3.png" data-back="fotos/camiseta atras3.png" aria-label="Rojo"></button>
+            <button class="merch-color-option merch-color-blue" data-color="blue" data-front="fotos/Camiseta delante4.png" data-back="fotos/camiseta atras4.png" aria-label="Azul"></button>
           </div>
           <div class="merch-popup-sizes" id="shirt-sizes">
             <button class="merch-size-option">XS</button>
@@ -67,12 +67,12 @@ const popups = {
           <img src="fotos/sudaD1.png" alt="Sudadera Classic Mystic Barrel" class="merch-popup-image" id="main-hoodie-img"/>
           <div class="merch-popup-thumbnails" id="hoodie-thumbnails">
             <img src="fotos/sudaD1.png" class="merch-thumbnail active" data-index="0" alt="Vista trasera"/>
-            <img src="fotos/sudaA1.png" class="merch-thumbnail" data-index="1" alt="Vista delantera"/>
+            <img src="fotos/SudaA1.png" class="merch-thumbnail" data-index="1" alt="Vista delantera"/>
           </div>
           <div class="merch-popup-colors" id="hoodie-colors">
-            <button class="merch-color-option merch-color-black selected" data-color="black" aria-label="Negro"></button>
-            <button class="merch-color-option merch-color-grey" data-color="grey" aria-label="Gris"></button>
-            <button class="merch-color-option merch-color-green" data-color="green" aria-label="Verde"></button>
+            <button class="merch-color-option merch-color-black selected" data-color="black" data-front="fotos/sudaD1.png" data-back="fotos/SudaA1.png" aria-label="Negro"></button>
+            <button class="merch-color-option merch-color-grey" data-color="grey" data-front="fotos/sudaD2.png" data-back="fotos/sudaA2.png" aria-label="Gris"></button>
+            <button class="merch-color-option merch-color-green" data-color="green" data-front="fotos/sudaD3.png" data-back="fotos/sudaA3.png" aria-label="Verde"></button>
           </div>
           <div class="merch-popup-sizes" id="hoodie-sizes">
             <button class="merch-size-option">S</button>
@@ -186,6 +186,36 @@ const popups = {
       </div>
     `
   },
+  taza: {
+    html: `
+      <div style="display:flex; flex-direction:row; gap:48px;">
+        <div class="merch-popup-col" style="align-items:center;">
+          <div id="taza-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+        </div>
+        <div class="merch-popup-info">
+          <div class="merch-popup-title">Taza Mystic Barrel</div>
+          <div class="merch-popup-desc">
+            Taza de cerámica premium con logo Mystic Barrel grabado.
+            <br><br>
+            Material: Cerámica de alta calidad<br>
+            Capacidad: 350ml<br>
+            Acabado: Brillante con logo dorado<br>
+            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">12,00€</span>
+          </div>
+          <div class="quantity-selector">
+            <span class="quantity-label">Cantidad:</span>
+            <button class="quantity-btn" onclick="decreaseQuantity('taza')">-</button>
+            <span class="quantity-value" id="quantity-taza">1</span>
+            <button class="quantity-btn" onclick="increaseQuantity('taza')">+</button>
+          </div>
+          <p id="price-taza" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">12,00€</p>
+          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('taza')">
+            Añadir al carrito
+          </button>
+        </div>
+      </div>
+    `
+  },
   llavero: {
     html: `
       <div style="display:flex; flex-direction:row; gap:48px;">
@@ -240,6 +270,7 @@ function updatePrice(product) {
     sudadera: 40,
     copa: 9.95,
     gorra: 25.00,
+    taza: 12.00,
     llavero: 15.00
   };
   const basePrice = prices[product];
@@ -322,11 +353,13 @@ document.querySelectorAll('.merch-card').forEach(card => {
       // Inicializar el precio del producto
       setTimeout(() => { updatePrice(key); }, 50);
       
-      // Solo carga el visor FBX si es el vaso, la gorra o el llavero
+      // Solo carga el visor FBX si es el vaso, la gorra, la taza o el llavero
       if (key === "copa") {
         setTimeout(() => { initVaso3D(); }, 100);
       } else if (key === "gorra") {
         setTimeout(() => { initGorra3D(); }, 100);
+      } else if (key === "taza") {
+        setTimeout(() => { initTaza3D(); }, 100);
       } else if (key === "llavero") {
         setTimeout(() => { initLlavero3D(); }, 100);
       }
@@ -352,6 +385,46 @@ document.getElementById('merch-popup-content').addEventListener('click', functio
     if (colorsContainer) {
       colorsContainer.querySelectorAll(".merch-color-option").forEach(b => b.classList.remove("selected"));
       e.target.classList.add("selected");
+      
+      // Cambiar imágenes para camiseta y sudadera
+      if (e.target.dataset.front && e.target.dataset.back) {
+        const frontImg = e.target.dataset.front;
+        const backImg = e.target.dataset.back;
+        
+        // Determinar si es camiseta o sudadera
+        const isShirt = colorsContainer.id === 'shirt-colors';
+        const isHoodie = colorsContainer.id === 'hoodie-colors';
+        
+        if (isShirt) {
+          // Actualizar imagen principal y thumbnails de camiseta
+          const mainImg = document.getElementById('main-shirt-img');
+          const thumbnails = document.getElementById('shirt-thumbnails');
+          
+          if (mainImg) {
+            mainImg.src = frontImg;
+          }
+          
+          if (thumbnails) {
+            const thumbnailImgs = thumbnails.querySelectorAll('.merch-thumbnail');
+            if (thumbnailImgs[0]) thumbnailImgs[0].src = frontImg;
+            if (thumbnailImgs[1]) thumbnailImgs[1].src = backImg;
+          }
+        } else if (isHoodie) {
+          // Actualizar imagen principal y thumbnails de sudadera
+          const mainImg = document.getElementById('main-hoodie-img');
+          const thumbnails = document.getElementById('hoodie-thumbnails');
+          
+          if (mainImg) {
+            mainImg.src = frontImg;
+          }
+          
+          if (thumbnails) {
+            const thumbnailImgs = thumbnails.querySelectorAll('.merch-thumbnail');
+            if (thumbnailImgs[0]) thumbnailImgs[0].src = frontImg;
+            if (thumbnailImgs[1]) thumbnailImgs[1].src = backImg;
+          }
+        }
+      }
       
       // Si es la gorra o el llavero, cambiar el modelo 3D
       if (e.target.dataset.model) {
@@ -584,6 +657,165 @@ function initGorra3DMain() {
   }
   
   window.addEventListener('resize', onWindowResize);
+}
+
+// Función para el visor 3D de la taza en la sección principal (sin controles)
+function initTaza3DMain() {
+  console.log('Iniciando visor 3D de taza principal...');
+  
+  const container = document.getElementById('taza-3d-viewer-main');
+  if (!container) {
+    console.error('No se encontró el contenedor taza-3d-viewer-main');
+    return;
+  }
+  
+  console.log('Contenedor de taza encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  
+  // Si el contenedor no tiene dimensiones, esperar un poco y reintentar
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor de taza no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initTaza3DMain(), 100);
+    return;
+  }
+  
+  // Limpiar y forzar dimensiones del contenedor
+  container.innerHTML = '';
+  container.style.width = '100%';
+  container.style.height = '240px'; // Mismo tamaño que las imágenes
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312'; // Mismo color que los demás popups
+  
+  console.log('Dimensiones de taza forzadas:', container.style.width, 'x', container.style.height);
+  
+  // Configurar la escena con fondo artesanal consistente
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x1f1810); // Color artesanal consistente
+  
+  // Configurar la cámara para mejor visualización de la taza
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 0.1, 3); // Más bajo para ver la taza desde un ángulo mejor
+  camera.lookAt(0, 0, 0);
+  
+  // Configurar el renderizador
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  // Configurar luces
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Cargar el modelo GLB/GLTF de la taza
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo: Taza.glb');
+  
+  loader.load(
+    'Taza.glb',
+    function(gltf) {
+      console.log('Modelo de taza cargado:', gltf);
+      console.log('Escena del modelo de taza:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Configurar el modelo
+      const model = gltf.scene;
+      
+      // Centrar el modelo
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir el modelo para mejor visualización
+      model.position.y += 0.2; // Más arriba (era 0.4, ahora 0.6)
+      
+      // Rotar el modelo para que se vea de pie (vertical)
+      model.rotation.x = (-320 * Math.PI) / 180; // Rotar 90 grados en X para ponerlo de pie
+      model.rotation.y = 0; // Sin rotación en Y para mostrar la otra cara
+      
+      // Centrar horizontalmente (mover un poco a la derecha)
+      model.position.x += 0.6; // Mover ligeramente a la derecha
+      
+      // Ajustar escala si es necesario (más pequeño para el contenedor)
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 1.5 / maxDim; // Más pequeño (era 1.2, ahora 1.0)
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales para mejor visualización
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.8;
+            node.material.roughness = 0.2;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Iniciar animación de rotación automática (sin controles)
+      function animate() {
+        requestAnimationFrame(animate);
+        
+        // Rotación automática constante en horizontal (eje Y)
+        model.rotation.y += 0.008;
+        
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      console.log((xhr.loaded / xhr.total * 100) + '% cargado');
+    },
+    function(error) {
+      console.error('Error al cargar el modelo de taza:', error);
+      
+      // Mostrar mensaje de error
+      container.innerHTML = '<div style="color: #c5a253; text-align: center; padding: 20px; font-family: Inter, sans-serif;">Error al cargar el modelo 3D</div>';
+    }
+  );
 }
 
 // Función para el visor 3D del llavero en la sección principal (sin controles)
@@ -961,6 +1193,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
     initVaso3DMain();
     initGorra3DMain();
+    initTaza3DMain();
     initLlavero3DMain();
   }, 100);
 });
@@ -1173,6 +1406,195 @@ function initGorra3D(modelFile = 'Gorra.glb') {
       loadingText.style.color = '#ff6b6b';
       document.getElementById('retry-button-gorra-popup').addEventListener('click', () => {
         initGorra3D(modelFile);
+      });
+    }
+  );
+}
+
+// Función para el visor 3D de la taza en el popup (con controles)
+function initTaza3D() {
+  console.log('Iniciando visor 3D de la taza...');
+  console.log('THREE disponible:', typeof THREE);
+  console.log('GLTFLoader disponible:', typeof THREE.GLTFLoader);
+  
+  if (typeof THREE.GLTFLoader === 'undefined') {
+    console.error('GLTFLoader no está disponible');
+    return;
+  }
+  
+  const container = document.getElementById('taza-3d-viewer');
+  if (!container) {
+    console.error('No se encontró el contenedor taza-3d-viewer');
+    return;
+  }
+  
+  console.log('Contenedor encontrado:', container);
+  console.log('Dimensiones del contenedor:', container.clientWidth, 'x', container.clientHeight);
+  console.log('Estilos del contenedor:', container.style.cssText);
+  
+  if (container.clientWidth === 0 || container.clientHeight === 0) {
+    console.log('El contenedor no tiene dimensiones, reintentando en 100ms...');
+    setTimeout(() => initTaza3D(), 100);
+    return;
+  }
+  
+  container.innerHTML = '';
+  container.style.width = '320px';
+  container.style.height = '320px';
+  container.style.display = 'block';
+  container.style.position = 'relative';
+  container.style.background = '#141312';
+  
+  const loadingText = document.createElement('div');
+  loadingText.style.position = 'absolute';
+  loadingText.style.top = '50%';
+  loadingText.style.left = '0';
+  loadingText.style.width = '100%';
+  loadingText.style.textAlign = 'center';
+  loadingText.style.color = '#c5a253';
+  loadingText.style.transform = 'translateY(-50%)';
+  loadingText.style.fontFamily = 'Inter, sans-serif';
+  loadingText.style.fontSize = '16px';
+  loadingText.textContent = 'Cargando modelo 3D...';
+  container.appendChild(loadingText);
+  
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x141312);
+  
+  // Configurar la cámara para ver la taza de frente con mejor ángulo
+  const camera = new THREE.PerspectiveCamera(
+    65,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.set(0, 0.1, 3); // Más bajo como en la página principal
+  camera.lookAt(0, 0, 0);
+  
+  // Rotar la cámara para ver la taza de frente
+  camera.position.x = 0; // Centrado
+  camera.position.z = 3; // Distancia adecuada
+  camera.lookAt(0, 0, 0); // Mirar al centro de la taza
+  
+  // Configurar el renderizador
+  const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+  });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.sortObjects = true;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.0;
+  
+  container.appendChild(renderer.domElement);
+  
+  renderer.domElement.style.position = 'absolute';
+  renderer.domElement.style.top = '0';
+  renderer.domElement.style.left = '0';
+  renderer.domElement.style.width = '100%';
+  renderer.domElement.style.height = '100%';
+  renderer.domElement.style.zIndex = '10';
+  
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  scene.add(ambientLight);
+  
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  directionalLight.castShadow = true;
+  scene.add(directionalLight);
+  
+  const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+  fillLight.position.set(-5, 5, -5);
+  scene.add(fillLight);
+  
+  // Configurar OrbitControls para la taza
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
+  controls.enableZoom = true;
+  controls.enableRotate = true;
+  controls.enablePan = false;
+  controls.minDistance = 2;
+  controls.maxDistance = 10;
+  controls.maxPolarAngle = Math.PI / 2;
+  
+  const loader = new THREE.GLTFLoader();
+  console.log('Cargando modelo:', 'Taza.glb');
+  
+  loader.load(
+    'Taza.glb',
+    function(gltf) {
+      console.log('✅ Modelo de taza cargado exitosamente:', gltf);
+      console.log('Escena del modelo:', gltf.scene);
+      console.log('Número de hijos:', gltf.scene.children.length);
+      
+      // Ocultar indicador de carga
+      if (loadingText.parentNode) {
+        container.removeChild(loadingText);
+      }
+      
+      // Configurar el modelo
+      const model = gltf.scene;
+      
+      // Centrar el modelo
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      model.position.sub(center);
+      
+      // Subir el modelo para mejor visualización de la taza (igual que página principal)
+      model.position.y += 0.2; // Igual que en la página principal
+      model.position.x += 0.6; // Igual que en la página principal
+      
+      // Ajustar escala si es necesario - misma escala que página principal
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x, size.y, size.z);
+      const scale = 1.5 / maxDim; // Igual que en la página principal
+      model.scale.multiplyScalar(scale);
+      
+      // Ajustar materiales
+      model.traverse((node) => {
+        if (node.isMesh) {
+          node.castShadow = true;
+          node.receiveShadow = true;
+          
+          if (node.material) {
+            node.material.metalness = 0.8;
+            node.material.roughness = 0.2;
+            node.material.envMapIntensity = 1;
+            
+            if (node.material.map) {
+              node.material.map.encoding = THREE.sRGBEncoding;
+            }
+            
+            node.material.side = THREE.DoubleSide;
+          }
+        }
+      });
+      
+      scene.add(model);
+      
+      // Animación con controles
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      
+      animate();
+    },
+    function(xhr) {
+      const percentLoaded = Math.round((xhr.loaded / (xhr.total || 1)) * 100);
+      loadingText.textContent = `Cargando modelo 3D... ${percentLoaded}%`;
+    },
+    function(error) {
+      console.error('Error al cargar el modelo de taza:', error);
+      loadingText.innerHTML = 'Error al cargar el modelo 3D. <button id="retry-button-taza" style="margin-top:10px; padding:8px 16px; background:#c5a253; color:#1b1a17; border:none; border-radius:4px; cursor:pointer;">Reintentar</button>';
+      loadingText.style.color = '#ff6b6b';
+      document.getElementById('retry-button-taza').addEventListener('click', () => {
+        initTaza3D();
       });
     }
   );
