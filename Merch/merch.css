@@ -1560,8 +1560,10 @@ body {
 .artisan-footer {
   background: linear-gradient(135deg, #1f1810 0%, #2a2218 50%, #1f1810 100%);
   border-top: 2px solid var(--artisan-gold);
+  padding: 60px 0 20px;
   position: relative;
   overflow: hidden;
+  margin-top: 80px;
 }
 
 .artisan-footer::before {
