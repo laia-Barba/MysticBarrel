@@ -228,6 +228,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 200ms ease;
+  z-index: 35; /* por encima del contenido, por debajo del modal del producto (z=40) */
 }
 
 .modal-overlay.open {
@@ -417,5 +418,255 @@ body {
   .user-btn {
     width: 44px;
     height: 44px;
+  }
+}
+
+
+/*-------------------------------------------Elementos pagina tienda-------------------------------------------------------*/
+
+body {
+  margin-left: 2cm;
+  margin-right: 2cm;
+  /*background: #23221e; /* Color de fondo general, opcional */
+}
+
+/*-------------------------------------------Contenedor productos whisky---------------------------------------------------*/
+.whisky-container {
+  width: 100%;              /* Ocupa todo el ancho de la ventana */
+  box-sizing: border-box;    /* Incluye el padding dentro del width */
+  padding: 1cm;              /* Padding de 1cm alrededor */
+  display: flex;
+  align-items: center;
+  background-color: #3c3933;
+  border-radius: 36px;
+  color: #e9e9d7;
+  box-shadow: 0 8px 20px 0 #000000;
+  margin-bottom: 25px;
+}
+
+.whisky-image {
+  width: 70px;
+  margin-right: 22px;
+}
+
+/* Modelo 3D en tarjeta de producto (Bourbon Heart) */
+.whisky-model {
+  display: block;
+  width: 120px;
+  height: 120px;
+  min-width: 120px;
+  min-height: 120px;
+  margin-right: 22px;
+  border-radius: 8px;
+  background: #b8b8a0a6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.whisky-content {
+  flex: 1;
+}
+
+.whisky-title {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f0eddc;
+}
+
+.whisky-description {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+}
+
+.whisky-more {
+  background-color: #2a261b;
+  color: #e9e9d7;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 18px;
+  cursor: pointer;
+}
+
+.whisky-price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 30px;
+}
+
+.whisky-price {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #f7f3de;
+  margin-bottom: 12px;
+}
+
+.whisky-buy {
+  background-color: #ada789;
+  color: #25241e;
+  border: none;
+  border-radius: 12px;
+  padding: 6px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---------------- Modal de producto ---------------- */
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+}
+
+.product-modal[hidden] {
+  display: none;
+}
+
+.product-modal-content {
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 18px;
+  padding: 24px;
+  max-width: 720px;
+  width: 90vw;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.product-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 1px solid var(--stroke);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 999px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.product-modal-close:hover,
+.product-modal-close:focus {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(197,162,83,0.1);
+}
+
+.product-modal-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.product-modal-image {
+  width: 180px;
+  max-width: 40%;
+  border-radius: 14px;
+  background: #3c3933;
+  object-fit: contain;
+}
+
+/* Modelo 3D dentro del modal (solo para Bourbon Heart) */
+.product-modal-model {
+  width: 180px;
+  max-width: 40%;
+  height: 180px;
+  min-height: 310px;
+  border-radius: 14px;
+  background: #b8b8a0a6;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.product-modal-info {
+  flex: 1;
+}
+
+.product-modal-title {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.7rem;
+  color: var(--gold);
+}
+
+.product-modal-description {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.product-modal-price-row,
+.product-modal-quantity-row,
+.product-modal-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.product-modal-price,
+.product-modal-total {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #26231f;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: transparent;
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.qty-btn:hover,
+.qty-btn:focus {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.qty-value {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.product-modal-buy {
+  margin-top: 14px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .product-modal-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product-modal-image {
+    max-width: 60%;
+  }
+
+  .product-modal-price-row,
+  .product-modal-quantity-row,
+  .product-modal-total-row {
+    gap: 12px;
   }
 }

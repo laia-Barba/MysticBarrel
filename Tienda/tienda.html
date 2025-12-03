@@ -101,14 +101,250 @@
         </form>
       </section>
     </template>
-
-    <main style="padding: 24px 24px 48px; max-width: 1100px; margin: 0 auto;">
-      <h1 class="modal-title">Tienda</h1>
-      <p class="modal-subtitle">Explora nuestra selección de whiskies.</p>
-      <!-- Aquí podrías listar productos en el futuro -->
+ 
+    <main style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
+      <img src="imagenes/MysticBarrelLogo.png" alt="Mystic Barrel" style="max-width: 420px; width: 100%; height: auto; display: block;" />
     </main>
 
-    <script src="../busquedaLogin.js"></script>
+    <section>
+      <div>
+        <h2>Blended Whiskies</h2>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/SmoothFusion3D.glb" alt="Botella whisky 3D - Smooth Fusion" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Smooth Fusion</h2>
+            <p class="whisky-description">Suave y equilibrado, destaca por sus delicadas notas de vainilla y miel, que envuelven el paladar en una experiencia redonda, perfecta para compartir y descubrir el mundo del whisky mezclado.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">45,35€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/GoldenBlend3D.glb" alt="Botella whisky 3D - Golden Blend" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Golden Blend</h2>
+            <p class="whisky-description">Aterciopelado y afrutado, fusiona frutas maduras con especias suaves dejando una agradable sensación dulce y cálida en boca. Ideal para quienes disfrutan de los aromas refinados y el sabor clásico.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">50,99€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/SoftMist3D.glb" alt="Botella whisky 3D - Soft Mist" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Soft Mist</h2>
+            <p class="whisky-description">Cremoso y elegante, combina flores frescas y cereales ligeramente dulces, creando un whisky ligero que invita a relajarse en cualquier momento del día, sin perder su carácter sofisticado.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">39,99€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+      </div>
+      
+      <div>
+        <h2>Smoked Whiskies</h2>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/SmokedFire3D.glb" alt="Botella whisky 3D - Smoked Fire" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Smoked Fire</h2>
+            <p class="whisky-description">Profundo y especiado, con una potente presencia ahumada y toques de madera tostada. Es el whisky ideal para quienes buscan personalidad y recuerdos intensos en cada sorbo.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">66,45€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/SoulOfSmoke3D.glb" alt="Botella whisky 3D - Soul of Smoke" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Soul of Smoke</h2>
+            <p class="whisky-description">Rico y ahumado, destaca por la turba y el dulce cálido en equilibrio, dejando una huella persistente y compleja en el paladar que seduce a los entusiastas del whisky ahumado.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">70,58€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/BurningHaze3D.glb" alt="Botella whisky 3D - Burning Haze" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Burning Haze</h2>
+            <p class="whisky-description">Intensamente ahumado y suave, con un toque misterioso, envuelve la boca con calidez y matices de brasa que invitan a disfrutarlo en momentos de reflexión y celebración</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">78,50€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Highlands Whiskies</h2>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/ScottishPeaks3D.glb" alt="Botella whisky 3D - Scottish Peaks" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Scottish Peaks</h2>
+            <p class="whisky-description">Herbal y fresco, reúne la esencia de la naturaleza escocesa, con aromas de brezo y hierbas silvestres. Perfecto para quienes buscan intensidad aromática y frescura vibrante en su copa.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">85,70€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/EchoOfTheHichlands3D.glb" alt="Botella whisky 3D - Echo of the Highlands" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Echo of the Highlands</h2>
+            <p class="whisky-description">Floral y levemente ahumado, aporta profundidad con una rica base de malta y matices delicados, evocando el paisaje y la tradición de las Highlands.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">95,50€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/HighlandBreeze3D.glb" alt="Botella whisky 3D - Highland Breeze" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Highland Breeze</h2>
+            <p class="whisky-description">Afrutado, especiado y refrescante, ofrece equilibrio entre fruta madura y especias suaves, recordando la brisa natural de las montañas escocesas.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">66,70€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>American Style Whiskies</h2>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/FreeSpirit3D.glb" alt="Botella whisky 3D - Free Spirit" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Free Spirit</h2>
+            <p class="whisky-description">Vibrante y dulce, combina vainilla y caramelo con especias vivas, transmitiendo un carácter festivo y desenfadado que se disfruta en cualquier reunión.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">58,97€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/GoldenRoute3D.glb" alt="Botella whisky 3D - Golden Route" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Golden Route</h2>
+            <p class="whisky-description">Caramelo, vainilla y roble equilibrado, destaca por su sabor envolvente y elegante, pensado para quienes buscan una experiencia americana auténtica y sofisticada.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">56,76€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/AmericanDawn3D.glb" alt="Botella whisky 3D - American Dawn" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">American Dawn</h2>
+            <p class="whisky-description">Grano tostado, miel y fruta ligera, es un whisky cálido y suave que se abre fácilmente, ideal para acompañar los inicios de cualquier velada.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">65,00€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Bourbon Whiskies</h2>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/BourbonHeart3D.glb" alt="Botella whisky 3D - Bourbon Heart" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Bourbon Heart</h2>
+            <p class="whisky-description">Fuerte presencia de roble, vainilla y fruta madura oscura, resulta cálido y aromático, perfecto para quienes quieren intensidad y nobleza en su bourbon.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">64,78€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/KentuckyOak3D.glb" alt="Botella whisky 3D - Kentucky Oak" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Kentucky Oak</h2>
+            <p class="whisky-description">Robusto y envolvente, con notas claras de caramelo y roble tostado, este bourbon respira la tradición de Kentucky con cada sorbo y acaba en un dulce y cálido abrazo.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">59,99€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+
+        <div class="whisky-container">
+          <model-viewer src="./Models3D/SouthernFlame3D.glb" alt="Botella whisky 3D - Southern Flame" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
+          <div class="whisky-content">
+            <h2 class="whisky-title">Southern Flame</h2>
+            <p class="whisky-description">Especiado y dulce, con maíz presente y un final muy suave, promueve una experiencia cálida y confortante ideal para la sobremesa y encuentros íntimos.</p>
+          </div>
+          <div class="whisky-price-section">
+            <span class="whisky-price">72,50€</span>
+            <button class="whisky-buy"><B>VER PRODUCTO</B></button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <br>
+    <!-- Modal producto -->
+    <div class="product-modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle" hidden>
+      <div class="product-modal-content">
+        <button class="product-modal-close" id="productModalClose" aria-label="Cerrar">
+          ✕
+        </button>
+
+        <div class="product-modal-layout">
+          <img id="productModalImage" src="" alt="" class="product-modal-image">
+          <model-viewer id="productModalModel" src="" alt="" class="product-modal-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" hidden></model-viewer>
+
+          <div class="product-modal-info">
+            <h2 id="productModalTitle" class="product-modal-title"></h2>
+            <p id="productModalDescription" class="product-modal-description"></p>
+
+            <div class="product-modal-price-row">
+              <span>Precio unidad:</span>
+              <span id="productModalUnitPrice" class="product-modal-price"></span>
+            </div>
+
+            <div class="product-modal-quantity-row">
+              <span>Cantidad:</span>
+              <div class="quantity-control">
+                <button type="button" class="qty-btn" data-action="decrease">−</button>
+                <span id="productModalQuantity" class="qty-value">1</span>
+                <button type="button" class="qty-btn" data-action="increase">+</button>
+              </div>
+            </div>
+
+            <div class="product-modal-total-row">
+              <span>Total:</span>
+              <span id="productModalTotal" class="product-modal-total"></span>
+            </div>
+
+            <button type="button" class="btn btn-primary product-modal-buy">
+              Comprar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="tienda.js"></script>
+    <script src="../busquedaLogin.js"></script>
   </body>
 </html>
+
