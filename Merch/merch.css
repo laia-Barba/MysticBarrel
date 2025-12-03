@@ -37,6 +37,7 @@
 
 html, body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -45,6 +46,8 @@ body {
   color: var(--text);
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   line-height: 1.5;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Header horizontal */
@@ -886,6 +889,8 @@ body {
   padding: 120px 20px;
   background: var(--artisan-bg);
   overflow: hidden;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 /* Fondo texturizado */
@@ -909,6 +914,8 @@ body {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Título artesanal */
@@ -1451,6 +1458,7 @@ body {
     0 4px 20px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(212, 175, 55, 0.1);
   min-width: 280px;
+  overflow-x: hidden;
 }
 
 .search:hover {
@@ -1563,7 +1571,6 @@ body {
   padding: 60px 0 20px;
   position: relative;
   overflow: hidden;
-  margin-top: 80px;
 }
 
 .artisan-footer::before {
