@@ -724,6 +724,34 @@ section {
   z-index: 1; /* Ensure content is above background texture */
 }
 
+/* Títulos de sección alineados con contenedores */
+section h2 {
+  margin: 0 0 25px 0;
+  padding: 0 2cm; /* Mismo padding que los contenedores */
+  font-family: 'Bebas Neue', cursive;
+  font-size: 2.5rem;
+  color: var(--artisan-gold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  position: relative;
+  max-width: 1200px; /* Mismo ancho máximo que contenedores */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 2cm;
+  width: 80px;
+  height: 3px;
+  background: var(--artisan-gold);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
 /* Fondo texturizado - removido ya que está en body */
 section::before {
   display: none; /* Hide section texture since body has it */
@@ -787,7 +815,7 @@ body {
 .whisky-title {
   margin: 0 0 8px 0;
   font-family: 'Bebas Neue', cursive; /* Misma tipografía que merch títulos */
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--artisan-text); /* Mismo color que merch */
   letter-spacing: 0.05em;
