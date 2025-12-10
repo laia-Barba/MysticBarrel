@@ -16,6 +16,27 @@ const buyButton = modal.querySelector('.product-modal-buy');
 
 let currentUnitPrice = 0;
 
+// Restringir movimiento vertical del modelo 3D en el popup
+function restrictModelVerticalMovement() {
+  if (modalModel) {
+    modalModel.addEventListener('load', () => {
+      const cameraControls = modalModel.cameraControls;
+      if (cameraControls) {
+        // Bloquear zoom y movimiento vertical
+        cameraControls.enableZoom = false;
+        cameraControls.enablePan = false;
+        
+        // Restringir el orbit solo a horizontal
+        cameraControls.addEventListener('change', () => {
+          const currentOrbit = cameraControls.getCameraOrbit();
+          // Mantener theta (horizontal) pero resetear phi (vertical) a 0
+          cameraControls.setCameraOrbit(currentOrbit.theta, 0, currentOrbit.radius);
+        });
+      }
+    });
+  }
+}
+
 // Función para convertir "45,35€" -> 45.35
 function parsePrice(text) {
   const cleaned = text.replace('€', '').trim().replace('.', '').replace(',', '.');
@@ -47,6 +68,11 @@ function openProductModal(card) {
     modalModel.hidden = false;
     modalModel.setAttribute('src', modelSrc);
     modalModel.setAttribute('alt', title + ' 3D');
+    
+    // Activar restricciones de movimiento vertical
+    setTimeout(() => {
+      restrictModelVerticalMovement();
+    }, 200);
   } else {
     modalImage.hidden = false;
     modalModel.hidden = true;

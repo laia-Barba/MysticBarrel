@@ -1018,12 +1018,10 @@ html {
 /* Modelo 3D en tarjeta de producto (Bourbon Heart) */
 .whisky-model {
   display: block;
-  width: 120px;
-  height: 120px;
-  min-width: 120px;
-  min-height: 120px;
-  margin-right: 22px;
-  border-radius: 8px;
+  width: 180px; /* Increased from 120px */
+  height: 180px; /* Increased from 120px */
+  border-radius: 12px;
+  margin-right: 25px; /* Increased margin for balance */
   background: #b8b8a0a6;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
@@ -1162,6 +1160,15 @@ html {
   border-radius: 14px;
   background: #b8b8a0a6;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Restringir movimiento vertical en el popup */
+.product-modal-model::part(default-model) {
+  --camera-orbit: 0deg auto;
+}
+
+.product-modal-model::part(camera-controls) {
+  touch-action: pan-y;
 }
 
 .product-modal-info {
