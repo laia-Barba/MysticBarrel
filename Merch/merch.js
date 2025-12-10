@@ -113,14 +113,20 @@ const popups = {
     html: `
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
-          <div id="vaso-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div id="vaso-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Vaso de Whisky Mystic Barrel</div>
           <div class="merch-popup-desc">
-            Cristal templado, grabado Mystic Barrel. Diseño exclusivo.
+            Vaso de whisky cristal templado de 350ml con grabado láser del logo Mystic Barrel. Base reforzada y boca ancha para apreciar correctamente los aromas. Incluye caja de presentación premium con certificado de autenticidad.
             <br><br>
-            Capacidad: 330 ml<br>
+            <strong>Características:</strong><br>
+            • Capacidad: 350ml<br>
+            • Material: Cristal templado de alta calidad<br>
+            • Grabado: Láser preciso del logo Mystic Barrel<br>
+            • Base: Reforzada para mayor estabilidad<br>
+            • Presentación: Caja premium con certificado<br>
+            <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">9,95€</span>
           </div>
           <div class="quantity-selector">
@@ -141,15 +147,21 @@ const popups = {
     html: `
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
-          <div id="gorra-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div id="gorra-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Gorra Premium Mystic Barrel</div>
           <div class="merch-popup-desc">
-            Gorra negra ajustable, logo dorado Mystic Barrel centrado.
+            Gorra de algodón peinado premium con cierre ajustable trasero. Bordado dorado del logo Mystic Barrel con hilo de alta resistencia. Forro interior transpirable y paneles laterales ventilados para máximo confort.
             <br><br>
-            Material: Algodón premium<br>
-            Ajuste: Correa trasera regulable<br>
+            <strong>Características:</strong><br>
+            • Material: Algodón peinado premium<br>
+            • Bordado: Logo Mystic Barrel en hilo dorado<br>
+            • Ajuste: Cierre trasero regulable<br>
+            • Forro: Interior transpirable<br>
+            • Paneles: Laterales ventilados<br>
+            • Durabilidad: Hilo de alta resistencia<br>
+            <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">25,00€</span>
           </div>
           <div class="merch-popup-colors">
@@ -190,16 +202,21 @@ const popups = {
     html: `
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
-          <div id="taza-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div id="taza-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Taza Mystic Barrel</div>
           <div class="merch-popup-desc">
-            Taza de cerámica premium con logo Mystic Barrel grabado.
+            Taza de cerámica de alta calidad de 400ml con acabado mate interior y brillante exterior. Logo Mystic Barrel grabado con técnica de impresión duradera. Resistente al microondas y lavavajillas. Incluye caja de regalo elegante.
             <br><br>
-            Material: Cerámica de alta calidad<br>
-            Capacidad: 350ml<br>
-            Acabado: Brillante con logo dorado<br>
+            <strong>Características:</strong><br>
+            • Capacidad: 400ml<br>
+            • Material: Cerámica de alta calidad<br>
+            • Acabado: Mate interior, brillante exterior<br>
+            • Grabado: Técnica de impresión duradera<br>
+            • Resistencia: Microondas y lavavajillas<br>
+            • Presentación: Caja de regalo elegante<br>
+            <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">12,00€</span>
           </div>
           <div class="quantity-selector">
@@ -220,15 +237,21 @@ const popups = {
     html: `
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
-          <div id="llavero-3d-viewer" style="width:320px;height:320px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div id="llavero-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Llavero Limited Mystic Barrel</div>
           <div class="merch-popup-desc">
-            Llavero metálico con logo Mystic Barrel grabado.
+            Llavero de acero inoxidable con pulido espejo y grabado preciso del logo Mystic Barrel. Medidas 5x3cm con anilla de aleación resistente a la corrosión. Presentado en estuche de cuero sintético con logo grabado.
             <br><br>
-            Material: Acero inoxidable<br>
-            Acabado: Pulido brillante<br>
+            <strong>Características:</strong><br>
+            • Material: Acero inoxidable<br>
+            • Acabado: Pulido espejo<br>
+            • Dimensiones: 5x3cm<br>
+            • Grabado: Logo Mystic Barrel de alta precisión<br>
+            • Anilla: Aleación resistente a la corrosión<br>
+            • Presentación: Estuche de cuero sintético<br>
+            <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">15,00€</span>
           </div>
           <div class="merch-popup-colors">
@@ -348,20 +371,28 @@ document.querySelectorAll('.merch-card').forEach(card => {
     const content = document.getElementById('merch-popup-content');
     if (popups[key]) {
       content.innerHTML = popups[key].html;
+      
+      // Resetear la posición del scroll al principio
+      const popupCard = document.querySelector('.merch-popup-card');
+      if (popupCard) {
+        popupCard.scrollTop = 0;
+      }
+      
       overlay.classList.add('active');
       
       // Inicializar el precio del producto
       setTimeout(() => { updatePrice(key); }, 50);
       
       // Solo carga el visor FBX si es el vaso, la gorra, la taza o el llavero
+      // Esperar a que termine la animación del popup (400ms) antes de cargar el 3D
       if (key === "copa") {
-        setTimeout(() => { initVaso3D(); }, 100);
+        setTimeout(() => { initVaso3D(); }, 500);
       } else if (key === "gorra") {
-        setTimeout(() => { initGorra3D(); }, 100);
+        setTimeout(() => { initGorra3D(); }, 500);
       } else if (key === "taza") {
-        setTimeout(() => { initTaza3D(); }, 100);
+        setTimeout(() => { initTaza3D(); }, 500);
       } else if (key === "llavero") {
-        setTimeout(() => { initLlavero3D(); }, 100);
+        setTimeout(() => { initLlavero3D(); }, 500);
       }
     }
   });
@@ -1231,8 +1262,8 @@ function initGorra3D(modelFile = 'Gorra.glb') {
   container.innerHTML = '';
   
   // Forzar dimensiones del contenedor
-  container.style.width = '320px';
-  container.style.height = '320px';
+  container.style.width = '280px';
+  container.style.height = '280px';
   container.style.display = 'block';
   container.style.position = 'relative';
   container.style.background = '#141312'; // Mismo color que los demás popups
@@ -1439,8 +1470,8 @@ function initTaza3D() {
   }
   
   container.innerHTML = '';
-  container.style.width = '320px';
-  container.style.height = '320px';
+  container.style.width = '280px';
+  container.style.height = '280px';
   container.style.display = 'block';
   container.style.position = 'relative';
   container.style.background = '#141312';
@@ -1633,8 +1664,8 @@ function initLlavero3D(modelFile = 'LLavero4.glb') {
   container.innerHTML = '';
   
   // Forzar dimensiones del contenedor
-  container.style.width = '320px';
-  container.style.height = '320px';
+  container.style.width = '280px';
+  container.style.height = '280px';
   container.style.display = 'block';
   container.style.position = 'relative';
   container.style.background = '#141312';
@@ -1855,8 +1886,8 @@ function initVaso3D() {
   container.innerHTML = '';
   
   // Forzar dimensiones del contenedor
-  container.style.width = '320px';
-  container.style.height = '320px';
+  container.style.width = '280px';
+  container.style.height = '280px';
   container.style.display = 'block';
   container.style.position = 'relative';
   container.style.background = '#141312'; // Mismo color que los demás popups

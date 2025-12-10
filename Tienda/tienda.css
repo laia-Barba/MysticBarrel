@@ -15,6 +15,53 @@
   --surface: #141312;     /* Superficie para tarjetas/modal */
   --focus: #e0c089;
   --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  /* Variables artesanales */
+  --artisan-bg: linear-gradient(135deg, #1a1814 0%, #2d2519 50%, #1a1814 100%);
+  --artisan-card: linear-gradient(145deg, #2a2218 0%, #1f1810 100%);
+  --artisan-gold: linear-gradient(45deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
+  --artisan-text: #f5f5dc;
+  --artisan-muted: #c9b79c;
+  --artisan-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+  --artisan-border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Título y subtítulo artesanales (mismo estilo que en Merch) */
+.merch-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: var(--artisan-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+  letter-spacing: 0.02em;
+  position: relative;
+}
+
+.merch-title::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: var(--artisan-gold);
+  border-radius: 2px;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+.merch-subtitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.4rem;
+  color: var(--artisan-muted);
+  text-align: center;
+  margin-bottom: 4rem;
+  font-style: italic;
+  font-weight: 600;
 }
 
 /* Breakpoint extra ancho */
@@ -50,92 +97,191 @@ body {
   position: relative;
 }
 
-/* Fondo texturizado para toda la página */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.01) 35px, rgba(212, 175, 55, 0.01) 70px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Header horizontal */
+/* Header ultra artesanal */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
   align-items: center;
-  gap: 28px;
-  padding: 16px 24px;
-  background: linear-gradient(180deg, rgba(20,19,18,0.95), rgba(20,19,18,0.85));
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  backdrop-filter: blur(8px);
-  width: 100%;
+  gap: 32px;
+  padding: 24px 40px;
+  background: var(--artisan-card);
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.6) 20%, 
+    rgba(212, 175, 55, 0.8) 50%, 
+    rgba(212, 175, 55, 0.6) 80%, 
+    transparent 100%) 1;
+  backdrop-filter: blur(25px);
+  box-shadow: 
+    0 12px 40px rgba(212, 175, 55, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2),
+    inset 0 -1px 0 rgba(212, 175, 55, 0.1);
   position: relative;
-  z-index: 10;
 }
 
-/* Espaciadores flexibles para centrar el grupo de elementos del header */
-.site-header::before,
+/* Efecto de brillo dorado premium */
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.8) 10%,
+    rgba(244, 228, 188, 0.9) 50%, 
+    rgba(212, 175, 55, 0.8) 90%,
+    transparent 100%);
+  opacity: 0.7;
+  animation: shimmerHeader 4s ease-in-out infinite;
+}
+
+/* Efecto de textura sutil */
 .site-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes shimmerHeader {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.9; }
+}
+
+/* Espaciadores flexibles */
+.site-header .header-spacer {
   content: "";
   flex: 1 1 0;
 }
 
 .brand {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 0.5px;
-  color: var(--gold);
+  font-weight: 900;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--artisan-gold);
   text-decoration: none;
   white-space: nowrap;
+  text-shadow: 
+    0 2px 12px rgba(212, 175, 55, 0.4),
+    0 1px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.1) 0%, 
+    transparent 50%, 
+    rgba(212, 175, 55, 0.05) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.brand::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: var(--artisan-gold);
+  border-radius: 14px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.brand:hover::before {
+  opacity: 0.1;
+}
+
+.brand:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 8px 25px rgba(212, 175, 55, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 28px;
+  z-index: 2;
 }
 
 .nav-link {
-  color: var(--text);
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  color: var(--artisan-text);
   text-decoration: none;
-  font-weight: 500;
-  padding: 8px 4px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.03em;
+  padding: 12px 20px;
   position: relative;
-  transition: color 180ms ease;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.05) 50%, 
+    transparent 100%);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--artisan-gold);
+  border-radius: 12px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+}
+
+.nav-link:hover {
+  color: #1a1814;
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-3px);
+  text-shadow: 0 1px 2px rgba(212, 175, 55, 0.3);
+}
+
+.nav-link:hover::before {
+  opacity: 0.15;
 }
 
 .nav-link::after {
-  content: "";
+  content: '';
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 2px;
-  height: 2px;
-  background: var(--gold);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 180ms ease;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--artisan-gold);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  color: var(--gold);
-}
-
-.nav-link:hover::after,
-.nav-link:focus::after {
-  transform: scaleX(1);
+.nav-link:hover::after {
+  width: 90%;
 }
 
 /* Buscador */
@@ -143,7 +289,7 @@ body::before {
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--artisan-card);
+  background: linear-gradient(180deg, #1f1810 0%, #2a2218 100%);
   border: var(--artisan-border);
   border-radius: 50px;
   padding: 12px 24px;
@@ -528,7 +674,7 @@ body::before {
 }
 
 .footer-section h4 {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 1.2rem;
   color: var(--artisan-text);
   margin-bottom: 15px;
@@ -575,7 +721,7 @@ body::before {
 }
 
 .footer-social h4 {
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 1.2rem;
   color: var(--artisan-text);
   margin-bottom: 15px;
@@ -704,8 +850,18 @@ body::before {
 /* Importar tipografía artesanal */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Text:wght@400;600&family=Bebas+Neue&display=swap');
 
-/* Variables artesanales */
+/* Variables globales y artesanales (igual que en paginaInici.css) */
 :root {
+  --bg: #0d0d0d;          /* Fondo principal */
+  --bg-alt: #1b1a17;      /* Fondo alterno (marrón muy oscuro) */
+  --text: #f2f2f2;        /* Texto claro */
+  --muted: #b8b8b8;       /* Texto atenuado */
+  --gold: #c5a253;        /* Acento dorado */
+  --stroke: rgba(197, 162, 83, 0.35);
+  --surface: #141312;     /* Superficie para tarjetas/modal */
+  --focus: #e0c089;
+  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  /* Variables artesanales */
   --artisan-bg: linear-gradient(135deg, #1a1814 0%, #2d2519 50%, #1a1814 100%);
   --artisan-card: linear-gradient(145deg, #2a2218 0%, #1f1810 100%);
   --artisan-gold: linear-gradient(45deg, #d4af37 0%, #f4e4bc 50%, #d4af37 100%);
@@ -718,7 +874,7 @@ body::before {
 /* Sección tienda con estilo artesanal */
 section {
   position: relative;
-  padding: 60px 40px; /* Aumentar padding horizontal */
+  padding: 120px 40px 60px 40px; /* margen superior similar a merch, manteniendo padding horizontal */
   background: transparent; /* Remove background to show body background */
   overflow: hidden;
   z-index: 1; /* Ensure content is above background texture */
@@ -728,10 +884,11 @@ section {
 section h2 {
   margin: 0 0 25px 0;
   padding: 0 2cm; /* Mismo padding que los contenedores */
-  font-family: 'Bebas Neue', cursive;
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 2.5rem;
+  font-weight: 700;
   color: var(--artisan-gold);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   text-align: left;
   position: relative;
@@ -764,7 +921,70 @@ section > div {
 
 body {
   margin: 0; /* Remove margins */
-  background: var(--artisan-bg);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+    linear-gradient(135deg, #0d0d0d 0%, #1a1814 50%, #0d0d0d 100%);
+  height: 100vh;
+  overflow: hidden; /* ocultar scroll del body, usar el del contenedor artesanal */
+  position: relative;
+}
+
+/* Textura de pergamino en todo el fondo (igual que .history-section) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(90deg,
+      transparent 0px,
+      rgba(212, 175, 55, 0.02) 1px,
+      transparent 2px,
+      transparent 40px),
+    repeating-linear-gradient(0deg,
+      transparent 0px,
+      rgba(212, 175, 55, 0.015) 1px,
+      transparent 2px,
+      transparent 30px);
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: -1;
+}
+
+/* Navegadores basados en WebKit (Chrome, Edge, etc.) */
+::-webkit-scrollbar {
+	width: 10px; /* mismo grosor que en la página de inicio */
+}
+
+::-webkit-scrollbar-track {
+  background: #090807;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3a2b18 0%, #c5a253 60%, #8c6a2b 100%);
+  border-radius: 999px;
+  border: 2px solid #090807;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #c5a253 0%, #f4e4bc 40%, #c5a253 100%);
+}
+
+/* Firefox: mismo estilo que en la página de inicio */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c5a253 #090807;
+}
+
+/* Contenedor con scroll artesanal interno */
+.page-scroll {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /*-------------------------------------------Contenedor productos whisky---------------------------------------------------*/
@@ -814,7 +1034,7 @@ body {
 
 .whisky-title {
   margin: 0 0 8px 0;
-  font-family: 'Bebas Neue', cursive; /* Misma tipografía que merch títulos */
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif; /* Misma tipografía que merch títulos */
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--artisan-text); /* Mismo color que merch */

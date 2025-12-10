@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="tienda.css" />
   </head>
   <body>
+    <div class="page-scroll">
     <header class="site-header">
       <a href="../Pagina%20inici/paginaInici.html" class="brand" aria-label="Mystic Barrel">Mystic Barrel</a>
       <nav class="main-nav" aria-label="Navegación primaria">
@@ -101,13 +102,12 @@
         </form>
       </section>
     </template>
- 
-    <main style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: center;">
-      <img src="imagenes/MysticBarrelLogo.png" alt="Mystic Barrel" style="max-width: 420px; width: 100%; height: auto; display: block;" />
-    </main>
 
     <section>
       <div>
+        <h1 class="merch-title">Colección Mystic Barrel</h1>
+        <p class="merch-subtitle">Whiskies artesanales con el espíritu de Mystic Barrel</p>
+
         <h2>Blended Whiskies</h2>
         <div class="whisky-container">
           <model-viewer src="./Models3D/SmoothFusion3D.glb" alt="Botella whisky 3D - Smooth Fusion" class="whisky-model" auto-rotate camera-controls exposure="0.9" shadow-intensity="1" poster="ruta_a_la_imagen_botella.jpg"></model-viewer>
@@ -412,6 +412,7 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script src="tienda.js"></script>
     <script src="../busquedaLogin.js"></script>
+    </div>
   </body>
 </html>
 
