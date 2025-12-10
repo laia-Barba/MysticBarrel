@@ -64,6 +64,35 @@
   font-weight: 600;
 }
 
+/* Logo de la marca */
+.brand-logo {
+  height: 70px; /* Reduced from 40px */
+  width: auto;
+  margin-right: 2px; /* Reduced margin */
+  transition: transform 0.3s ease;
+}
+
+.brand-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Brand container with logo and text */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.1) 0%, 
+    transparent 50%, 
+    rgba(212, 175, 55, 0.05) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 /* Breakpoint extra ancho */
 @media (min-width: 1600px) {
   .site-header {
