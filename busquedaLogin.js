@@ -236,7 +236,7 @@
     panel.style.top = '0';
     panel.style.right = '0';
     panel.style.height = '100vh';
-    panel.style.width = '420px';
+    panel.style.width = '480px';
     panel.style.maxWidth = '92vw';
     panel.style.background = 'var(--surface, #1a1816)';
     panel.style.borderLeft = '1px solid var(--stroke, rgba(255,255,255,0.12))';
@@ -339,18 +339,19 @@
         name.style.whiteSpace = 'nowrap';
         name.style.maxWidth = '250px';
 
-        const price = document.createElement('div');
-        price.textContent = (Number(it.unitPrice || 0)).toFixed(2).replace('.', ',') + '€';
-        price.style.color = 'var(--gold, #c5a253)';
-        price.style.fontWeight = '800';
+        const qty = Number(it.qty || 0);
+        const subtotal = (Number(it.unitPrice || 0) * qty);
+
+        const subtotalEl = document.createElement('div');
+        subtotalEl.textContent = subtotal.toFixed(2).replace('.', ',') + '€';
+        subtotalEl.style.color = 'var(--gold, #c5a253)';
+        subtotalEl.style.fontWeight = '800';
 
         const actions = document.createElement('div');
-        actions.style.display = 'inline-flex';
-        actions.style.alignItems = 'center';
-        actions.style.gap = '10px';
+        actions.style.display = 'grid';
+        actions.style.justifyItems = 'end';
+        actions.style.gap = '8px';
         actions.style.flexShrink = '0';
-
-        const qty = Number(it.qty || 0);
 
         const qtyWrap = document.createElement('div');
         qtyWrap.style.display = 'inline-flex';
@@ -398,6 +399,8 @@
 
         if (qty <= 1) {
           decBtn.style.opacity = '0.55';
+          decBtn.disabled = true;
+          decBtn.style.cursor = 'not-allowed';
         }
 
         qtyWrap.appendChild(decBtn);
@@ -416,20 +419,20 @@
         removeAllBtn.style.cursor = 'pointer';
         removeAllBtn.style.fontWeight = '700';
 
-        actions.appendChild(price);
-        if (qty > 1) actions.appendChild(qtyWrap);
         actions.appendChild(removeAllBtn);
+        actions.appendChild(qtyWrap);
 
         const meta = document.createElement('div');
-        const subtotal = (Number(it.unitPrice || 0) * qty);
-        meta.textContent = `Cantidad: ${qty} · Subtotal: ${subtotal.toFixed(2).replace('.', ',')}€`;
+        const unitPriceText = (Number(it.unitPrice || 0)).toFixed(2).replace('.', ',') + '€';
+        meta.textContent = `Cantidad: ${qty} · Precio: ${unitPriceText}`;
         meta.style.color = 'var(--muted, #b8b8b8)';
         meta.style.fontSize = '0.95rem';
         meta.style.lineHeight = '1.4';
 
         top.appendChild(name);
-        top.appendChild(actions);
+        top.appendChild(subtotalEl);
         row.appendChild(top);
+        row.appendChild(actions);
         row.appendChild(meta);
         itemsEl.appendChild(row);
       });
@@ -575,12 +578,15 @@
       }
     } else if (existingName) {
       existingName.remove();
-      userBtn.style.maxWidth = '';
-      userBtn.style.width = '';
+      userBtn.style.display = '';
+      userBtn.style.alignItems = '';
+      userBtn.style.justifyContent = '';
+      userBtn.style.gap = '';
       userBtn.style.paddingLeft = '';
       userBtn.style.paddingRight = '';
-      userBtn.style.gap = '';
-      userBtn.style.justifyContent = '';
+      userBtn.style.width = '';
+      userBtn.style.maxWidth = '';
+      userBtn.style.opacity = '';
       if (icon) {
         icon.style.flexShrink = '';
         icon.style.display = '';
@@ -772,6 +778,8 @@
     bindAuthHandlers();
 
     // Mostrar overlay y panel con animación
+    overlay.style.zIndex = '9998';
+    sidePanel.style.zIndex = '9999';
     overlay.hidden = false;
     sidePanel.hidden = false;
     overlay.offsetHeight; sidePanel.offsetHeight; // eslint-disable-line no-unused-expressions
@@ -824,7 +832,11 @@
     const action = btn.getAttribute('data-action');
     toggleMenu(false);
     if (action === 'logout') {
+      const ok = window.confirm('¿Seguro que quieres cerrar sesión?');
+      if (!ok) return;
       clearSession();
+      userBtn.disabled = false;
+      userBtn.removeAttribute('aria-disabled');
       updateUserMenu();
       return;
     }
@@ -836,7 +848,8 @@
     closePanel();
   });
 
-  overlay.addEventListener('click', () => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target !== overlay) return;
     if (!sidePanel.hasAttribute('hidden')) closePanel();
   });
 
