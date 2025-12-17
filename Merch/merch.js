@@ -330,13 +330,101 @@ function decreaseQuantity(product) {
   }
 }
 
+function getSession() {
+  try {
+    return JSON.parse(localStorage.getItem('mb_session') || 'null');
+  } catch {
+    return null;
+  }
+}
+
+function showAuthRequiredPopup() {
+  const existing = document.getElementById('mb-auth-required-overlay');
+  if (existing) {
+    existing.hidden = false;
+    existing.style.display = 'flex';
+    return;
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'mb-auth-required-overlay';
+  overlay.style.position = 'fixed';
+  overlay.style.inset = '0';
+  overlay.style.background = 'rgba(0,0,0,0.72)';
+  overlay.style.display = 'flex';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.zIndex = '9999';
+  overlay.style.padding = '24px';
+
+  const card = document.createElement('div');
+  card.style.background = 'var(--surface, #1a1816)';
+  card.style.border = '1px solid var(--stroke, rgba(255,255,255,0.12))';
+  card.style.borderRadius = '18px';
+  card.style.boxShadow = '0 20px 60px rgba(0,0,0,0.55)';
+  card.style.maxWidth = '520px';
+  card.style.width = '100%';
+  card.style.padding = '18px 18px 16px 18px';
+
+  const title = document.createElement('div');
+  title.textContent = 'Inicia sesión para continuar';
+  title.style.fontFamily = "'Playfair Display', serif";
+  title.style.fontWeight = '700';
+  title.style.fontSize = '1.5rem';
+  title.style.color = 'var(--gold, #c5a253)';
+  title.style.marginBottom = '8px';
+
+  const msg = document.createElement('div');
+  msg.textContent = 'Para añadir productos al carrito necesitas iniciar sesión.';
+  msg.style.color = 'var(--text, #f4f4f4)';
+  msg.style.opacity = '0.9';
+  msg.style.lineHeight = '1.5';
+  msg.style.marginBottom = '14px';
+
+  const actions = document.createElement('div');
+  actions.style.display = 'flex';
+  actions.style.justifyContent = 'flex-end';
+  actions.style.gap = '10px';
+
+  const closeBtn = document.createElement('button');
+  closeBtn.type = 'button';
+  closeBtn.textContent = 'Cerrar';
+  closeBtn.style.background = 'var(--bg-alt, #141312)';
+  closeBtn.style.border = '1px solid var(--stroke, rgba(255,255,255,0.12))';
+  closeBtn.style.color = 'var(--text, #f4f4f4)';
+  closeBtn.style.borderRadius = '12px';
+  closeBtn.style.padding = '10px 14px';
+  closeBtn.style.cursor = 'pointer';
+
+  closeBtn.onclick = () => {
+    overlay.hidden = true;
+    overlay.style.display = 'none';
+  };
+  overlay.onclick = (e) => {
+    if (e.target === overlay) closeBtn.onclick();
+  };
+
+  actions.appendChild(closeBtn);
+  card.appendChild(title);
+  card.appendChild(msg);
+  card.appendChild(actions);
+  overlay.appendChild(card);
+  document.body.appendChild(overlay);
+}
+
 function addToCart(product) {
+  const session = getSession();
+  if (!session || !session.email) {
+    showAuthRequiredPopup();
+    return;
+  }
   const quantity = parseInt(document.getElementById(`quantity-${product}`).textContent);
   const prices = {
     camiseta: 25,
     sudadera: 40,
     copa: 9.95,
     gorra: 25.00,
+    taza: 12.00,
     llavero: 15.00
   };
   const basePrice = prices[product];
@@ -348,19 +436,22 @@ function addToCart(product) {
     sudadera: { name: 'Sudadera Classic', price: 40 },
     copa: { name: 'Vaso de Whisky Mystic Barrel', price: 9.95 },
     gorra: { name: 'Gorra Premium Mystic Barrel', price: 25.00 },
+    taza: { name: 'Taza Mystic Barrel', price: 12.00 },
     llavero: { name: 'Llavero Limited Mystic Barrel', price: 15.00 }
   };
   
   const info = productInfo[product];
   
-  // Mostrar mensaje de confirmación
+  if (window.mbCart && typeof window.mbCart.addItem === 'function') {
+    window.mbCart.addItem({
+      id: `merch:${product}`,
+      name: info.name,
+      unitPrice: info.price,
+      qty: quantity
+    });
+  }
+
   console.log(`Añadido al carrito: ${quantity} x ${info.name} = ${totalPrice}€`);
-  
-  // Aquí podrías integrar con un sistema de carrito real
-  alert(`✅ ${quantity} ${info.name}(s) añadido(s) al carrito\nTotal: ${totalPrice}€`);
-  
-  // Opcional: Cerrar el popup después de añadir
-  // closePopup();
 }
 
 // Mostrar popup merch
