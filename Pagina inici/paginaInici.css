@@ -181,10 +181,15 @@ body {
 }
 
 .nav-link:hover {
-  color: #1a1814;
+  color: var(--artisan-text, #f5f5dc);
   border-color: rgba(212, 175, 55, 0.4);
   transform: translateY(-3px);
   text-shadow: 0 1px 2px rgba(212, 175, 55, 0.3);
+}
+
+.nav-link:focus,
+.nav-link:active {
+  color: var(--artisan-text, #f5f5dc) !important;
 }
 
 .nav-link::after {
@@ -485,6 +490,14 @@ body {
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   text-decoration: none;
   white-space: nowrap;
+}
+
+.brand-text {
+  background: var(--artisan-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
 }
 
 /* Efecto de textura en el contenedor destacado */
