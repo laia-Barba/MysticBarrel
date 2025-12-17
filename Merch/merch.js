@@ -114,6 +114,16 @@ const popups = {
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
           <div id="vaso-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div class="quantity-selector">
+            <span class="quantity-label">Cantidad:</span>
+            <button class="quantity-btn" onclick="decreaseQuantity('copa')">-</button>
+            <span class="quantity-value" id="quantity-copa">1</span>
+            <button class="quantity-btn" onclick="increaseQuantity('copa')">+</button>
+          </div>
+          <p id="price-copa" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">9,95€</p>
+          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('copa')">
+            Añadir al carrito
+          </button>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Vaso de Whisky Mystic Barrel</div>
@@ -129,16 +139,6 @@ const popups = {
             <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">9,95€</span>
           </div>
-          <div class="quantity-selector">
-            <span class="quantity-label">Cantidad:</span>
-            <button class="quantity-btn" onclick="decreaseQuantity('copa')">-</button>
-            <span class="quantity-value" id="quantity-copa">1</span>
-            <button class="quantity-btn" onclick="increaseQuantity('copa')">+</button>
-          </div>
-          <p id="price-copa" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">9,95€</p>
-          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('copa')">
-            Añadir al carrito
-          </button>
         </div>
       </div>
     `
@@ -148,22 +148,6 @@ const popups = {
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
           <div id="gorra-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
-        </div>
-        <div class="merch-popup-info">
-          <div class="merch-popup-title">Gorra Premium Mystic Barrel</div>
-          <div class="merch-popup-desc">
-            Gorra de algodón peinado premium con cierre ajustable trasero. Bordado dorado del logo Mystic Barrel con hilo de alta resistencia. Forro interior transpirable y paneles laterales ventilados para máximo confort.
-            <br><br>
-            <strong>Características:</strong><br>
-            • Material: Algodón peinado premium<br>
-            • Bordado: Logo Mystic Barrel en hilo dorado<br>
-            • Ajuste: Cierre trasero regulable<br>
-            • Forro: Interior transpirable<br>
-            • Paneles: Laterales ventilados<br>
-            • Durabilidad: Hilo de alta resistencia<br>
-            <br>
-            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">25,00€</span>
-          </div>
           <div class="merch-popup-colors">
             <div class="merch-color-label">Color:</div>
             <button class="merch-color-option selected" data-color="verde" data-model="Gorra.glb" style="background:#2d5016;"></button>
@@ -181,6 +165,22 @@ const popups = {
           <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('gorra')">
             Añadir al carrito
           </button>
+        </div>
+        <div class="merch-popup-info">
+          <div class="merch-popup-title">Gorra Premium Mystic Barrel</div>
+          <div class="merch-popup-desc">
+            Gorra de algodón peinado premium con cierre ajustable trasero. Bordado dorado del logo Mystic Barrel con hilo de alta resistencia. Forro interior transpirable y paneles laterales ventilados para máximo confort.
+            <br><br>
+            <strong>Características:</strong><br>
+            • Material: Algodón peinado premium<br>
+            • Bordado: Logo Mystic Barrel en hilo dorado<br>
+            • Ajuste: Cierre trasero regulable<br>
+            • Forro: Interior transpirable<br>
+            • Paneles: Laterales ventilados<br>
+            • Durabilidad: Hilo de alta resistencia<br>
+            <br>
+            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">25,00€</span>
+          </div>
         </div>
       </div>
     `
@@ -203,6 +203,16 @@ const popups = {
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
           <div id="taza-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
+          <div class="quantity-selector">
+            <span class="quantity-label">Cantidad:</span>
+            <button class="quantity-btn" onclick="decreaseQuantity('taza')">-</button>
+            <span class="quantity-value" id="quantity-taza">1</span>
+            <button class="quantity-btn" onclick="increaseQuantity('taza')">+</button>
+          </div>
+          <p id="price-taza" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">12,00€</p>
+          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('taza')">
+            Añadir al carrito
+          </button>
         </div>
         <div class="merch-popup-info">
           <div class="merch-popup-title">Taza Mystic Barrel</div>
@@ -219,16 +229,6 @@ const popups = {
             <br>
             Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">12,00€</span>
           </div>
-          <div class="quantity-selector">
-            <span class="quantity-label">Cantidad:</span>
-            <button class="quantity-btn" onclick="decreaseQuantity('taza')">-</button>
-            <span class="quantity-value" id="quantity-taza">1</span>
-            <button class="quantity-btn" onclick="increaseQuantity('taza')">+</button>
-          </div>
-          <p id="price-taza" style="margin: 20px 0; font-size: 1.5em; color: #c5a253; font-weight: bold;">12,00€</p>
-          <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('taza')">
-            Añadir al carrito
-          </button>
         </div>
       </div>
     `
@@ -238,22 +238,6 @@ const popups = {
       <div style="display:flex; flex-direction:row; gap:48px;">
         <div class="merch-popup-col" style="align-items:center;">
           <div id="llavero-3d-viewer" style="width:280px;height:280px;background:#141312;border-radius:16px;box-shadow:0 8px 36px rgba(197, 162, 83, 0.15);"></div>
-        </div>
-        <div class="merch-popup-info">
-          <div class="merch-popup-title">Llavero Limited Mystic Barrel</div>
-          <div class="merch-popup-desc">
-            Llavero de acero inoxidable con pulido espejo y grabado preciso del logo Mystic Barrel. Medidas 5x3cm con anilla de aleación resistente a la corrosión. Presentado en estuche de cuero sintético con logo grabado.
-            <br><br>
-            <strong>Características:</strong><br>
-            • Material: Acero inoxidable<br>
-            • Acabado: Pulido espejo<br>
-            • Dimensiones: 5x3cm<br>
-            • Grabado: Logo Mystic Barrel de alta precisión<br>
-            • Anilla: Aleación resistente a la corrosión<br>
-            • Presentación: Estuche de cuero sintético<br>
-            <br>
-            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">15,00€</span>
-          </div>
           <div class="merch-popup-colors">
             <div class="merch-color-label">Color:</div>
             <button class="merch-color-option selected" data-color="rosa" data-model="LLavero4.glb" style="background:#be185d;"></button>
@@ -270,6 +254,22 @@ const popups = {
           <button class="merch-add-to-cart" style="width:100%;padding:12px;background:#c5a253;color:#000;border:none;border-radius:4px;font-size:1em;cursor:pointer;font-weight:bold;transition:all 0.3s ease;" onclick="addToCart('llavero')">
             Añadir al carrito
           </button>
+        </div>
+        <div class="merch-popup-info">
+          <div class="merch-popup-title">Llavero Limited Mystic Barrel</div>
+          <div class="merch-popup-desc">
+            Llavero de acero inoxidable con pulido espejo y grabado preciso del logo Mystic Barrel. Medidas 5x3cm con anilla de aleación resistente a la corrosión. Presentado en estuche de cuero sintético con logo grabado.
+            <br><br>
+            <strong>Características:</strong><br>
+            • Material: Acero inoxidable<br>
+            • Acabado: Pulido espejo<br>
+            • Dimensiones: 5x3cm<br>
+            • Grabado: Logo Mystic Barrel de alta precisión<br>
+            • Anilla: Aleación resistente a la corrosión<br>
+            • Presentación: Estuche de cuero sintético<br>
+            <br>
+            Precio: <span style="color:var(--gold);font-weight:700;font-size:1.2rem;">15,00€</span>
+          </div>
         </div>
       </div>
     `
