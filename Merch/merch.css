@@ -22,7 +22,7 @@
   height: 70px; /* Reduced from 40px */
   width: auto;
   margin-right: 2px; /* Reduced margin */
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .brand-logo:hover {
@@ -36,14 +36,20 @@
   gap: 12px;
   padding: 8px 16px;
   border-radius: 12px;
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.1) 0%, 
-    transparent 50%, 
-    rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: transparent; /* Integrado con el fondo del header, sin bloque claro */
+  border: none;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   text-decoration: none;
   white-space: nowrap;
+}
+
+.brand:hover {
+  transform: scale(2.2); /* Ligero zoom artesanal */
+  box-shadow: none; /* Sin efecto botón clásico */
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(360deg) scale(1.05); /* Vuelta suave del logo */
 }
 
 /* Breakpoint extra ancho */
@@ -192,37 +198,22 @@ body::before {
   z-index: 2;
   padding: 8px 16px;
   border-radius: 12px;
-  background: linear-gradient(135deg, 
-    rgba(212, 175, 55, 0.1) 0%, 
-    transparent 50%, 
-    rgba(212, 175, 55, 0.05) 100%);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: transparent; /* Integrado con el fondo del header */
+  border: none;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .brand::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: var(--artisan-gold);
-  border-radius: 14px;
-  opacity: 0;
-  z-index: -1;
-  transition: opacity 0.4s ease;
-}
-
-.brand:hover::before {
-  opacity: 0.1;
+  content: none; /* Sin halo dorado alrededor del logo */
 }
 
 .brand:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 
-    0 8px 25px rgba(212, 175, 55, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: scale(1.02); /* Ligero zoom artesanal */
+  box-shadow: none; /* Sin efecto botón clásico */
+}
+
+.brand:hover .brand-logo {
+  transform: rotate(360deg) scale(1.05); /* Vuelta suave del logo */
 }
 
 .main-nav {
