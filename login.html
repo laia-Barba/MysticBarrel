@@ -1,37 +1,143 @@
-<!-- Fragmento: Formulario de inicio de sesión (aparente) -->
 <section class="auth-section">
-  <form class="auth-form" aria-label="Formulario de inicio de sesión" onsubmit="return false;">
-    <div class="field">
-      <label for="login-email">Email</label>
-      <input id="login-email" name="email" type="email" placeholder="tu@email.com" required />
+  <div class="auth-shell">
+    <div class="auth-header">
+      <h2 class="auth-title">Bienvenido a Mystic Barrel</h2>
+      <p class="auth-subtitle">Accede a tu reserva privada de experiencias y whisky artesanal.</p>
     </div>
-    <div class="field">
-      <label for="login-password">Contraseña</label>
-      <input id="login-password" name="password" type="password" placeholder="••••••••" required />
-    </div>
-    <div class="form-meta">
-      <label class="checkbox">
-        <input type="checkbox" />
-        <span>Recuérdame</span>
-      </label>
-      <a href="#" class="link">¿Olvidaste tu contraseña?</a>
-    </div>
-    <button class="btn btn-primary" type="button" aria-disabled="true">Entrar</button>
-  </form>
+
+    <form class="auth-form" aria-label="Formulario de inicio de sesión" onsubmit="return false;">
+      <div class="field">
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" placeholder="tu@email.com" required />
+      </div>
+      <div class="field">
+        <label for="login-password">Contraseña</label>
+        <input id="login-password" name="password" type="password" placeholder="••••••••" required />
+      </div>
+      <div class="form-meta">
+        <label class="checkbox">
+          <input type="checkbox" />
+          <span>Recuérdame en este barril</span>
+        </label>
+        <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+      </div>
+      <button class="btn btn-primary" type="button" aria-disabled="true">Entrar en la bodega</button>
+    </form>
+  </div>
 </section>
 
 <style>
-  .auth-section { display: grid; gap: 14px; }
-  .auth-form { display: grid; gap: 14px; }
-  .field { display: grid; gap: 6px; }
-  .field label { color: var(--muted); font-size: 0.95rem; }
-  .field input {
-    height: 42px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--stroke);
-    background: transparent; color: var(--text);
+  .auth-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 4px;
   }
-  .field input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(197,162,83,0.18); }
-  .form-meta { display: flex; justify-content: space-between; align-items: center; }
-  .checkbox { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
-  .link { color: var(--gold); text-decoration: none; }
-  .link:hover { text-decoration: underline; }
+
+  .auth-shell {
+    width: 100%;
+    max-width: 420px;
+    padding: 22px 22px 20px;
+    border-radius: 20px;
+    background: radial-gradient(circle at top, rgba(212,175,55,0.18) 0%, transparent 55%),
+                var(--artisan-card, linear-gradient(145deg, #2a2218 0%, #1f1810 100%));
+    border: var(--artisan-border, 1px solid rgba(212,175,55,0.2));
+    box-shadow: var(--artisan-shadow, 0 10px 32px rgba(0,0,0,0.65));
+    display: grid;
+    gap: 18px;
+  }
+
+  .auth-header {
+    text-align: left;
+    display: grid;
+    gap: 6px;
+  }
+
+  .auth-title {
+    margin: 0;
+    font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--artisan-gold, linear-gradient(45deg,#d4af37 0%,#f4e4bc 50%,#d4af37 100%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.65);
+  }
+
+  .auth-subtitle {
+    margin: 0;
+    font-family: 'Crimson Text', serif;
+    font-size: 0.98rem;
+    color: var(--artisan-muted, #c9b79c);
+  }
+
+  .auth-form {
+    display: grid;
+    gap: 14px;
+  }
+
+  .field {
+    display: grid;
+    gap: 6px;
+  }
+
+  .field label {
+    color: var(--artisan-muted, var(--muted));
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .field input {
+    height: 42px;
+    padding: 0 12px;
+    border-radius: 12px;
+    border: 1px solid var(--stroke, rgba(197,162,83,0.35));
+    background: rgba(0,0,0,0.35);
+    color: var(--text, #f2f2f2);
+    font-family: inherit;
+  }
+
+  .field input::placeholder {
+    color: var(--muted, #b8b8b8);
+    opacity: 0.7;
+  }
+
+  .field input:focus {
+    outline: none;
+    border-color: var(--gold, #c5a253);
+    box-shadow: 0 0 0 2px rgba(197,162,83,0.3);
+  }
+
+  .form-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+
+  .checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--artisan-muted, var(--muted));
+  }
+
+  .checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+  }
+
+  .link {
+    color: var(--gold, #c5a253);
+    text-decoration: none;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
 </style>

@@ -223,7 +223,8 @@
     overlay.hidden = true;
     overlay.style.position = 'fixed';
     overlay.style.inset = '0';
-    overlay.style.background = 'rgba(0,0,0,0.55)';
+    overlay.style.background = 'rgba(0,0,0,0.65)';
+    overlay.style.backdropFilter = 'blur(6px)';
     overlay.style.zIndex = '9998';
     overlay.style.display = 'none';
 
@@ -236,26 +237,42 @@
     panel.style.top = '0';
     panel.style.right = '0';
     panel.style.height = '100vh';
-    panel.style.width = '480px';
-    panel.style.maxWidth = '92vw';
-    panel.style.background = 'var(--surface, #1a1816)';
-    panel.style.borderLeft = '1px solid var(--stroke, rgba(255,255,255,0.12))';
-    panel.style.boxShadow = '0 20px 60px rgba(0,0,0,0.55)';
+    panel.style.width = 'min(480px, 92vw)';
+    panel.style.background = 'var(--artisan-card, linear-gradient(145deg, #2a2218 0%, #1f1810 100%))';
+    panel.style.borderLeft = 'var(--artisan-border, 1px solid rgba(212, 175, 55, 0.2))';
+    panel.style.boxShadow = 'var(--artisan-shadow, 0 20px 60px rgba(0,0,0,0.55))';
     panel.style.zIndex = '9999';
     panel.style.display = 'none';
-    panel.style.padding = '16px';
+    panel.style.padding = '18px 18px 16px';
     panel.style.overflow = 'hidden';
+    panel.style.borderRadius = '18px 0 0 18px';
+    panel.style.boxSizing = 'border-box';
+    panel.style.display = 'flex';
+    panel.style.flexDirection = 'column';
+    panel.style.gap = '12px';
 
     panel.innerHTML = `
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;">
-        <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:1.5rem;color:var(--gold,#c5a253);">Carrito</div>
-        <button type="button" id="mb-cart-close" style="width:40px;height:40px;border-radius:12px;background:var(--bg-alt,#141312);border:1px solid var(--stroke, rgba(255,255,255,0.12));color:var(--text,#f4f4f4);cursor:pointer;">✕</button>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:4px;">
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <div style="font-family:'Playfair Display',serif;font-weight:800;font-size:1.6rem;letter-spacing:0.05em;text-transform:uppercase;background:var(--artisan-gold, linear-gradient(45deg,#d4af37 0%,#f4e4bc 50%,#d4af37 100%));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 2px 16px rgba(0,0,0,0.45);">Carrito</div>
+          <div style="font-family:'Crimson Text',serif;font-size:0.95rem;color:var(--artisan-muted,#c9b79c);opacity:0.9;">Tu selección artesanal de Mystic Barrel</div>
+        </div>
+        <button type="button" id="mb-cart-close" style="width:40px;height:40px;border-radius:999px;background:rgba(0,0,0,0.25);border:1px solid var(--stroke, rgba(197,162,83,0.4));color:var(--artisan-text,#f5f5dc);cursor:pointer;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,0.5);">✕</button>
       </div>
-      <div id="mb-cart-items" style="display:grid;gap:12px;"></div>
-      <div style="height:1px;background:var(--stroke, rgba(255,255,255,0.12));margin:14px 0;"></div>
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <div style="color:var(--muted,#b8b8b8);font-weight:600;">Total</div>
-        <div id="mb-cart-total" style="color:var(--gold,#c5a253);font-weight:800;font-size:1.2rem;">0,00€</div>
+      <div style="height:1px;width:100%;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.6),transparent);opacity:0.8;margin:2px 0 6px 0;"></div>
+      <div id="mb-cart-items" style="flex:1 1 auto;min-height:0;display:grid;gap:10px;padding-right:4px;padding-top:4px;overflow-y:auto;">
+      </div>
+      <div style="margin-top:6px;padding-top:10px;border-top:1px solid rgba(212,175,55,0.25);display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <span style="font-size:0.85rem;font-family:'Crimson Text',serif;color:var(--artisan-muted,#c9b79c);text-transform:uppercase;letter-spacing:0.08em;">Total estimado</span>
+          <span style="font-size:0.9rem;color:var(--muted,#b8b8b8);opacity:0.9;">Impuestos incluidos cuando apliquen</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+          <div id="mb-cart-total" style="color:var(--gold,#c5a253);font-weight:800;font-size:1.35rem;text-shadow:0 2px 12px rgba(0,0,0,0.7);">0,00€</div>
+          <button type="button" id="mb-cart-checkout" style="margin-top:2px;padding:8px 18px;border-radius:999px;border:1px solid var(--artisan-border, rgba(212,175,55,0.2));background:var(--artisan-gold, linear-gradient(45deg,#d4af37 0%,#f4e4bc 50%,#d4af37 100%));color:#1a1814;font-weight:700;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.45);display:inline-flex;align-items:center;gap:8px;">
+            <span>Comprar</span>
+          </button>
+        </div>
       </div>
     `;
 
@@ -270,6 +287,20 @@
     };
     overlay.addEventListener('click', close);
     panel.querySelector('#mb-cart-close').addEventListener('click', close);
+
+    const checkoutBtn = panel.querySelector('#mb-cart-checkout');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cart = getCart();
+        const { totalQty, totalPrice } = calcCartTotals(cart);
+        if (!totalQty) {
+          showCartToast('Tu carrito está vacío.');
+          return;
+        }
+        window.alert(`Total de tu compra: ${totalPrice.toFixed(2).replace('.', ',')}€`);
+      });
+    }
 
     return { overlay, panel };
   }
